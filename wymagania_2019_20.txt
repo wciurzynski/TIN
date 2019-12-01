@@ -1,0 +1,36 @@
+Zadanie 1
+- twitter bootsrap / konkurencyjną
+
+getbootstrap.com
+
+- listing + widok szczegółowy
+- przemyśleć:
+* która technologia FE
+* która technologia BE
+* która baza danych
+* tematyka projektu
+* podstawowa architektura
+cel: 
+- zbudowanie fundamentu warstwy prezentacji pod wasz projekt końcowy
+- przemyślenie funamentu całej aplikacji
+
+
+----------------------------
+Dawid Pacholczyk
+dpacholczyk@pjwstk.edu.pl
+
+1. zadania
+- muszą być zaliczone maksymalnie na 7 ćwiczeniach <-- dopuszczenia do projektu końcowego
+
+2. projekt końcowy
+- aplikacja webowa
+* frontend: angular / reacta
+* backend: dowolna technologia
+* baza danych: dowolna
+funckjonalności:
+- katalog produktów (możliwość dodania przez admina)
+- listing produktów
+- widok szczegółowy
+- formularz (w miarę rozbudowany)(podstawowa walidacja i najlepiej mapwanie na jakiś obiekt)
+- prosta wyszukiwarka + autocomplete
+- autoryzacja (opcja na plus)

@@ -1,0 +1,19 @@
+Ćwiczenie A
+Zaimplementuj poniższe skrypty JS – jeden plik powinien zawierać implementację jednego zadania, nazwij pliki 7a.js, 7b.js itd. Rozwiązania w czystym Node, bez express
+a)      Prosty serwer HTTP przyjmujący żądania wykonania różnych operacji matematycznych (add, sub, mul, div) pod różnymi url, wyciągający parametry z parametrów żądania (mogą być np. w ścieżce) i zwracający wynik w formie odpowiedzi html zawierającej parametry żądania i wynik. Formatowanie zależy od Ciebie. Pamiętaj o obsłudze błędnych/brakujących parametrów.
+Podpowiedzi
+1.       Httpdispatcher
+2.       Request.url
+3.       Ściąga z modułu http pod: https://nodejs.org/api/http.html
+4.       https://nodejs.org/en/download/ ß instalator node na windows
+5.       Eclipse CHE
+ 
+ 
+Ćwiczenie B
+Zbuduj aplikację Express, która:
+a)       Obsłuży ścieżkę /hello zwracając “hello world”
+b)      Obsłuży ścieżkę /form zwracając formularz HTML z 3 polami, formularz powinien wysyłać dane pod /formdata
+c)       Obsłuży ścieżkę /formdata akceptując dane formularza i wyświetli je w cywilizowany sposób korzystając z wybranego engine szablonów
+d)      Obsłuży ścieżkę /jsondata akceptując dane w formacie json (użyj np. curl by przetestować) i wyświetli je w cywilizowany sposób korzystając z wybranego engine szablonów. Struktura danych zależ od Ciebie, ale json powinien mieć przynajmniej 3 pola
+Podpowiedzi
+W zależności od konfiguracji komenda z wykładu npm express –ejs appName może nie działać. Wynika to z tego, że windowsowa „konsola” nie widzi modułu express. Trzeba to 

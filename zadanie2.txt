@@ -1,0 +1,29 @@
+Celem nadrzędnym tego zadania jest przygotowania pełnowartościowych, statycznych szablonów. Realnie jest to rozwinięcie ćwiczenia rozgrzewkowego z pierwszych zajęć.
+Po zajęciach numer jeden powinni Państwo już dysponować dwoma szablonami:
+listą produktów
+widokiem szczegółowym
+
+W tym zadaniu skupimy się na ich rozwinięciu.
+Państwa szablony powinny zawierać:
+Logo
+Nawigację górną
+Część na content/treść
+Stopkę
+
+Strona ma być w pełni responsywna. Jednak dla uproszczenia przyjmiemy jedynie 4 rozdzielczości:
+Full HD (1920x1080)
+1280x1240
+Tablet
+Smartphone
+
+Sprawdzenie odbędzie się z wykorzystaniem emulatora wbudowanego w przeglądarce.
+
+Dodatkowe wytyczne:
+Logo w formie pliku graficznego. Kolorystyka loga i strony musi być spójna
+Nawigacja musi zawierać kilka podstawowych pozycji takich jak: strona domowa, o nas, kontakt, produkty. Dodatkowe pozycje są dozwolone i powinny być spójne z tematyką Państwa serwisu
+Treść strony
+W przypadku szablonu z produktami treść ma zawierać pierwszą stronę Państwa produktów np. 10 różnych. Każdy produkt powinien zawierać zdjęcie, tytuł, krótki opis, kategorie, cenę, dodatkowe guziki niezbędne do funkcjonowania Państwa serwisu w przyszłości. Należy uwzględnić link do szczegółów produktu. Szablon ten powinien mieć układ dwukolumnowy w proporcji 1:3
+W przypadku szablonu z detalami produktu jest to widok który skupia się na produkcie i zawiera dodatkowe informacje o produkcie. Może być to układ jednokolumnowy
+Stopka powinna być zbudowana zgodnie z obecnymi standardami czyli posiadać informacje o firmie, pomocniczą nawigacje i dodatkowe rzeczy jak np. zapis na newsletter
+
+Podczas budowania Państwa szablonów prosze pamiętac o istnieniu takich tagów jak <nav>, <content>, <fig>, <figcaption>
