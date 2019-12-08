@@ -69,28 +69,35 @@ app.post('/person/init', function (req, res) {
         },
     ]
 
-    MongoClient.connect(url, function(err, db) {
-    
+    MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
+        if (err) {
+            console.log(err);
+            process.exit(0);
+        }
         db.collection('person').insertMany(person_list);
-    
-    }); 
+
+    });
 
     res.json(person_list);
 });
 
 app.get('/person/:personID{24}', function (req, res) {
 
-if (!ObjectId.isValid(req.params.personID)){
-    res.status(400).send('PersonID not valid');
-}
+    if (!ObjectId.isValid(req.params.personID)) {
+        res.status(400).send('PersonID not valid');
+    }
 
-    MongoClient.connect(url, function(err, db) {
+    MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
+        if (err) {
+            console.log(err);
+            process.exit(0);
+        }
 
-        var person = db.collection('person').findOne({_id: ObjectId(req.params.personID)});
+        var person = db.collection('person').findOne({ _id: ObjectId(req.params.personID) });
         console.log(person);
         res.json(person);
 
-    }); 
+    });
 });
 
 var server = app.listen(3000, function () { });
