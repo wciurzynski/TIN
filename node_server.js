@@ -103,6 +103,7 @@ app.get('/person', function (req, res) {
 
 app.get('/person/:personID{24}', function (req, res) {
 
+    console.log(req.params.personID);
     if (!ObjectID.isValid(req.params.personID)) {
         res.status(400).send('PersonID not valid');
     }
