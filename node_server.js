@@ -1,10 +1,14 @@
 var express = require('express');
 var app = express();
+
+var MongoClient = require('mongodb').MongoClient;
+var url = 'mongodb://localhost/TIN';
+
 app.get('/', function (req, res) {
     res.send('Hello World!');
 });
 
-app.get('/person/:personID', function (req, res) {
+app.post('/person/init', function (req, res) {
 
 
     person_list = [
@@ -17,7 +21,9 @@ app.get('/person/:personID', function (req, res) {
             "age": 30,
             "description": "Miłośnik sportów ekstremalnych. Lubi spędzać czas ze swoją rodziną. Pracuje jako lekarz w jednej z przychodni",
             "life_goals": [
-                "test"
+                "Wybudować dom",
+                "Zwiedzić USA",
+                "Napisać własną książke o życiu lekarza"
             ]
         },
         {
@@ -27,9 +33,10 @@ app.get('/person/:personID', function (req, res) {
             "postcode": "10-020",
             "address": "Trybunalska 31",
             "age": 31,
-            "description": "",
+            "description": "Lorem ipsum dolor sit amet",
             "life_goals": [
-                
+                "Lorem ipsum dolor sit amet",
+                "Lorem ipsum dolor sit amet"
             ]
         },
         {
@@ -39,9 +46,9 @@ app.get('/person/:personID', function (req, res) {
             "postcode": "11-022",
             "address": "Główna 1",
             "age": 32,
-            "description": "",
+            "description": "Lorem ipsum dolor sit amet",
             "life_goals": [
-                
+                "Lorem ipsum dolor sit amet"
             ]
         },
         {
@@ -51,19 +58,38 @@ app.get('/person/:personID', function (req, res) {
             "postcode": "00-100",
             "address": "Hoża 25",
             "age": 33,
-            "description": "",
+            "description": "Lorem ipsum dolor sit amet",
             "life_goals": [
-                
+                "Lorem ipsum dolor sit amet",
+                "Lorem ipsum dolor sit amet",
+                "Lorem ipsum dolor sit amet",
+                "Lorem ipsum dolor sit amet",
             ]
         },
     ]
 
-    personID = parseInt(req.params.personID)
-    if (personID > person_list.length || personID <= 0) {
-        res.status(404).send('Person not found');
-     }
+    MongoClient.connect(url, function(err, db) {
+    
+        db.collection('person').insertMany(person_list);
+    
+    }); 
 
-    res.json(person_list[personID - 1]);
+    res.json(person_list);
+});
+
+app.get('/person/:personID', function (req, res) {
+
+if (!ObjectId.isValid(req.params.personID)){
+    res.status(400).send('PersonID not valid');
+}
+
+    MongoClient.connect(url, function(err, db) {
+
+        var person = db.collection('person').findOne({_id: ObjectId(req.params.personID)});
+        console.log(person);
+        res.json(person);
+
+    }); 
 });
 
 var server = app.listen(3000, function () { });
