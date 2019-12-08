@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 
 var MongoClient = require('mongodb').MongoClient;
+var ObjectID = require('mongodb').ObjectID;
 var url = 'mongodb://localhost/TIN';
 
 app.get('/', function (req, res) {
@@ -77,7 +78,7 @@ app.post('/person/init', function (req, res) {
     res.json(person_list);
 });
 
-app.get('/person/:personID', function (req, res) {
+app.get('/person/:personID{24}', function (req, res) {
 
 if (!ObjectId.isValid(req.params.personID)){
     res.status(400).send('PersonID not valid');
