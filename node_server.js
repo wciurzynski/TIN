@@ -69,7 +69,10 @@ app.post('/person/init', function (req, res) {
         },
     ]
 
-    MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
+    MongoClient.connect(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }, function (err, db) {
         if (err) {
             console.log(err);
             process.exit(0);
