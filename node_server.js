@@ -97,8 +97,13 @@ app.get('/person', function (req, res) {
 
         var personArray = [];
         client.db('TIN').collection('person').find({}).toArray(function(err, result) {
+            if (err) throw err;
+            console.log(result);
             personArray.push(result);
-        });
+          });
+        // client.db('TIN').collection('person').find({}).toArray(function(err, result) {
+        //     personArray.push(result);
+        // });
         console.log(personArray);
         res.json(personArray);
 
