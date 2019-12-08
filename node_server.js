@@ -117,9 +117,10 @@ app.get('/person/:personID', function (req, res) {
             process.exit(0);
         }
 
-        var person = client.db('TIN').collection('person').findOne({ _id: ObjectID(req.params.personID) });
-        console.log(person);
-        res.json(person);
+        client.db('TIN').collection('person').findOne({ _id: ObjectID(req.params.personID) }, (err, item) => {
+            console.log(item);
+            res.json(person);
+          })
 
     });
 });
