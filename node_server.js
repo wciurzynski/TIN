@@ -101,7 +101,7 @@ app.get('/person', function (req, res) {
     });
 });
 
-app.get('/person/:personID{24}', function (req, res) {
+app.get('/person/:personID', function (req, res) {
 
     console.log(req.params.personID);
     if (!ObjectID.isValid(req.params.personID)) {
