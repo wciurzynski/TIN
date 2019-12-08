@@ -103,7 +103,7 @@ app.get('/person', function (req, res) {
 
 app.get('/person/:personID{24}', function (req, res) {
 
-    if (!ObjectId.isValid(req.params.personID)) {
+    if (!ObjectID.isValid(req.params.personID)) {
         res.status(400).send('PersonID not valid');
     }
 
@@ -116,7 +116,7 @@ app.get('/person/:personID{24}', function (req, res) {
             process.exit(0);
         }
 
-        var person = client.db('TIN').collection('person').findOne({ _id: ObjectId(req.params.personID) });
+        var person = client.db('TIN').collection('person').findOne({ _id: ObjectID(req.params.personID) });
         console.log(person);
         res.json(person);
 
