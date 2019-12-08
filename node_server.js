@@ -84,6 +84,27 @@ app.post('/person/init', function (req, res) {
     res.json(person_list);
 });
 
+app.get('/person', function (req, res) {
+
+    MongoClient.connect(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }, function (err, client) {
+        if (err) {
+            console.log(err);
+            process.exit(0);
+        }
+
+        var personArray = [];
+        client.db('TIN').collection('person').find({}).toArray(function(err, result) {
+            personArray.push(result);
+        });
+        console.log(personArray);
+        res.json(personArray);
+
+    });
+});
+
 app.get('/person/:personID{24}', function (req, res) {
 
     if (!ObjectId.isValid(req.params.personID)) {
