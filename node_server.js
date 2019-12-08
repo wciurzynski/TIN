@@ -119,7 +119,7 @@ app.get('/person/:personID', function (req, res) {
 
         client.db('TIN').collection('person').findOne({ _id: ObjectID(req.params.personID) }, (err, item) => {
             console.log(item);
-            res.json(person);
+            res.json({data: item});
           })
 
     });
