@@ -95,13 +95,9 @@ app.get('/person', function (req, res) {
             process.exit(0);
         }
 
-        var personArray = await client.db('TIN').collection('person').find({}).toArray();
-        // client.db('TIN').collection('person').find({}).toArray(function(err, result) {
-        //     personArray.push(result);
-        // });
-        console.log(personArray);
-        res.json({"data": personArray});
-
+        client.db('TIN').collection('person').find({}).toArray(function(err, result) {
+            res.json({"data": result});
+        });
     });
 });
 
