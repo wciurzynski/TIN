@@ -96,7 +96,7 @@ app.get('/person', function (req, res) {
         }
 
         client.db('TIN').collection('person').find({}).toArray(function(err, result) {
-            res.json({"data": result});
+            res.jsonp({"data": result});
         });
     });
 });
@@ -119,7 +119,7 @@ app.get('/person/:personID', function (req, res) {
 
         client.db('TIN').collection('person').findOne({ _id: ObjectID(req.params.personID) }, (err, item) => {
             console.log(item);
-            res.json({data: item});
+            res.jsonp({data: item});
           })
 
     });
