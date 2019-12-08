@@ -13,28 +13,48 @@ app.get('/person/:personID', function (req, res) {
             "surname": "Kowalski",
             "city": "Warszawa",
             "postcode": "00-000",
-            "address": "Hoża 20"
+            "address": "Hoża 20",
+            "age": 30,
+            "description": "Miłośnik sportów ekstremalnych. Lubi spędzać czas ze swoją rodziną. Pracuje jako lekarz w jednej z przychodni",
+            "life_goals": [
+                "test"
+            ]
         },
         {
             "firstname": "Mirosław",
             "surname": "Agawski",
             "city": "Szczecin",
             "postcode": "10-020",
-            "address": "Trybunalska 31"
+            "address": "Trybunalska 31",
+            "age": 31,
+            "description": "",
+            "life_goals": [
+                
+            ]
         },
         {
             "firstname": "Tomasz",
             "surname": "Król",
             "city": "Gdańsk",
             "postcode": "11-022",
-            "address": "Główna 1"
+            "address": "Główna 1",
+            "age": 32,
+            "description": "",
+            "life_goals": [
+                
+            ]
         },
         {
             "firstname": "Agata",
             "surname": "Kowalska",
             "city": "Warszawa",
             "postcode": "00-100",
-            "address": "Hoża 25"
+            "address": "Hoża 25",
+            "age": 33,
+            "description": "",
+            "life_goals": [
+                
+            ]
         },
     ]
 
