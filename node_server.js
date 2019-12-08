@@ -95,12 +95,7 @@ app.get('/person', function (req, res) {
             process.exit(0);
         }
 
-        var personArray = [];
-        client.db('TIN').collection('person').find({}).toArray(function(err, result) {
-            if (err) throw err;
-            //console.log(result);
-            personArray.push(...result);
-          });
+        var personArray = client.db('TIN').collection('person').find({}).toArray();
         // client.db('TIN').collection('person').find({}).toArray(function(err, result) {
         //     personArray.push(result);
         // });
