@@ -16,6 +16,12 @@ dispatcher.onPost("/add", function(req, res) {
     var query = parts.query;
     var firstNumber = query.firstNumber;
     var secondNumber = query.secondNumber;
+    if (!isNaN(firstNumber)){
+        firstNumber = parseInt(firstNumber);
+    }
+    if (!isNaN(secondNumber)){
+        secondNumber = parseInt(secondNumber);
+    }
     if (!Number.isInteger(firstNumber)){
         res.writeHead(400, {'Content-Type': 'text/plain'});
         res.end('First number must be int');
