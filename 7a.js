@@ -44,26 +44,27 @@ function compute(req, res, method) {
         secondNumber = parseInt(secondNumber);
     }
     if (!Number.isInteger(firstNumber)){
-        res.writeHead(400, {'Content-Type': 'text/plain'});
+        res.writeHead(400, {'Content-Type': 'text/html'});
         res.end('First number must be int');
     }
     if (!Number.isInteger(secondNumber)){
-        res.writeHead(400, {'Content-Type': 'text/plain'});
+        res.writeHead(400, {'Content-Type': 'text/html'});
         res.end('Second number must be int');
     }
 
-    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.writeHead(200, {'Content-Type': 'text/html'});
     if (method === 'add'){
-        res.end("Result " + String(firstNumber + secondNumber));
+        res.write(String(firstNumber) + " + " + String(secondNumber) + " = " + String(firstNumber + secondNumber));
     } else if (method === 'sub'){
-        res.end("Result " + String(firstNumber - secondNumber));
+        res.write(String(firstNumber) + " - " + String(secondNumber) + " = " + String(firstNumber - secondNumber));
     } else if (method === 'mul'){
-        res.end("Result " + String(firstNumber * secondNumber));
+        res.write(String(firstNumber) + " * " + String(secondNumber) + " = " + String(firstNumber * secondNumber));
     } else if (method === 'div'){
-        res.end("Result " + String(firstNumber / secondNumber));
+        res.write(String(firstNumber) + " / " + String(secondNumber) + " = " + String(firstNumber / secondNumber));
     } else {
-        res.writeHead(400, {'Content-Type': 'text/plain'});
-        res.end("Invalid method");
+        res.writeHead(400, {'Content-Type': 'text/html'});
+        res.write();
     }
+    res.end();
 
  }
