@@ -47,9 +47,12 @@ function compute(req, res, method) {
         res.writeHead(400, {'Content-Type': 'text/html'});
         res.end('First number must be int');
     }
+    console.log('111')
     if (!Number.isInteger(secondNumber)){
+        console.log('12')
         res.writeHead(400, {'Content-Type': 'text/html'});
         res.end('Second number must be int');
+        console.log('222')
     }
 
     res.writeHead(200, {'Content-Type': 'text/html'});
