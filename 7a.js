@@ -12,27 +12,19 @@ dispatcher.onGet("/page1", function(req, res) {
 });
 
 dispatcher.onPost("/add", function(req, res) {
-    validateQueryParams(req, res);
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end("Result " + String(query.firstNumber + query.secondNumber));
+    compute(req, res, 'add');
 });
 
 dispatcher.onPost("/sub", function(req, res) {
-    validateQueryParams(req, res);
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end("Result " + String(query.firstNumber - query.secondNumber));
+    compute(req, res, 'sub');
 });
 
 dispatcher.onPost("/mul", function(req, res) {
-    validateQueryParams(req, res);
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end("Result " + String(query.firstNumber * query.secondNumber));
+    compute(req, res, 'mul');
 });
 
 dispatcher.onPost("/div", function(req, res) {
-    validateQueryParams(req, res);
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end("Result " + String(query.firstNumber / query.secondNumber));
+    compute(req, res, 'div');
 });
 
 http.createServer(function (req, res) {
@@ -40,7 +32,7 @@ http.createServer(function (req, res) {
 }).listen(3001, '0.0.0.0');
 
 
-function validateQueryParams(req, res) { 
+function compute(req, res, method) { 
     var parts = url.parse(req.url, true);
     var query = parts.query;
     var firstNumber = query.firstNumber;
@@ -59,4 +51,19 @@ function validateQueryParams(req, res) {
         res.writeHead(400, {'Content-Type': 'text/plain'});
         res.end('Second number must be int');
     }
+
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    if (method === 'add'){
+        res.end("Result " + String(query.firstNumber + query.secondNumber));
+    } else if (method === 'sub'){
+        res.end("Result " + String(query.firstNumber - query.secondNumber));
+    } else if (method === 'mul'){
+        res.end("Result " + String(query.firstNumber * query.secondNumber));
+    } else if (method === 'div'){
+        res.end("Result " + String(query.firstNumber / query.secondNumber));
+    } else {
+        res.writeHead(400, {'Content-Type': 'text/plain'});
+        res.end("Result method");
+    }
+
  }
