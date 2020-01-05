@@ -12,6 +12,35 @@ dispatcher.onGet("/page1", function(req, res) {
 });
 
 dispatcher.onPost("/add", function(req, res) {
+    validateQueryParams(req, res);
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end("Result " + String(query.firstNumber + query.secondNumber));
+});
+
+dispatcher.onPost("/sub", function(req, res) {
+    validateQueryParams(req, res);
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end("Result " + String(query.firstNumber - query.secondNumber));
+});
+
+dispatcher.onPost("/mul", function(req, res) {
+    validateQueryParams(req, res);
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end("Result " + String(query.firstNumber * query.secondNumber));
+});
+
+dispatcher.onPost("/div", function(req, res) {
+    validateQueryParams(req, res);
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end("Result " + String(query.firstNumber / query.secondNumber));
+});
+
+http.createServer(function (req, res) {
+    dispatcher.dispatch(req, res);
+}).listen(3001, '0.0.0.0');
+
+
+function validateQueryParams(req, res) { 
     var parts = url.parse(req.url, true);
     var query = parts.query;
     var firstNumber = query.firstNumber;
@@ -30,25 +59,4 @@ dispatcher.onPost("/add", function(req, res) {
         res.writeHead(400, {'Content-Type': 'text/plain'});
         res.end('Second number must be int');
     }
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end("Result " + String(firstNumber + secondNumber));
-});
-
-dispatcher.onPost("/sub", function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Page Two');
-});
-
-dispatcher.onPost("/mul", function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Page Two');
-});
-
-dispatcher.onPost("/div", function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Page Two');
-});
-
-http.createServer(function (req, res) {
-    dispatcher.dispatch(req, res);
-}).listen(3001, '0.0.0.0');
+ }
