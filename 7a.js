@@ -3,10 +3,10 @@ var http           = require('http');
 var dispatcher     = new HttpDispatcher();
 
 
-dispatcher.onGet("/:method", function(req, res) {
-    console.log(req.params.method);
+dispatcher.onGet("/page1", function(req, res) {
+    // console.log(req.params.method);
     res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end(req.params.method);
+    res.end("page1");
 });
 
 dispatcher.onPost("/:method[add|sub|mul|div]", function(req, res) {
