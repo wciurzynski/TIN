@@ -46,13 +46,15 @@ function compute(req, res, method) {
     if (!Number.isInteger(firstNumber)){
         res.writeHead(400, {'Content-Type': 'text/html'});
         res.end('First number must be int');
+        return;
     }
     console.log('111')
     if (!Number.isInteger(secondNumber)){
         console.log('12')
         res.writeHead(400, {'Content-Type': 'text/html'});
         res.end('Second number must be int');
-        console.log('222')
+        console.log('222');
+        return;
     }
 
     res.writeHead(200, {'Content-Type': 'text/html'});
@@ -69,5 +71,5 @@ function compute(req, res, method) {
         res.write();
     }
     res.end();
-
+    return;
  }
