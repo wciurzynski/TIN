@@ -1,4 +1,4 @@
-var HttpDispatcher = require('../httpdispatcher');
+var HttpDispatcher = require('httpdispatcher');
 var http           = require('http');
 var dispatcher     = new HttpDispatcher();
 
