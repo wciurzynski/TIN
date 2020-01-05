@@ -23,11 +23,10 @@
         <p>Chciałbym zaprezentować komponent "list-group" z wykorzystaniem Twitter Bootstrap</p>
 
       </header>
-      <a target="_blank" rel="noopener noreferrer" href="details.html">Link</a>
+
       <div class="list-group">
-        <a class="list-group-item list-group-item-action flex-column align-items-start" data-toggle="modal"
-          data-target="#detailsModalCenter" data-firstname="Jan" data-surname="Kowalski" data-city="Warszawa" data-postcode="00-000"
-          data-address="Hoża 20">
+              <!--
+        <a class="list-group-item list-group-item-action flex-column align-items-start" target="_blank" rel="noopener noreferrer" href="details1.html">
           <h4>Jan Kowalski</h4>
           <div class="row">
             <div class="col-sm-12 col-md-4">
@@ -75,7 +74,7 @@
             </div>
           </div>
           <p class="mb-1">Programista.</p>
-        </a>
+        </a> -->
       </div>
     </div>
 
@@ -140,24 +139,7 @@
 
         res.data.forEach(function (person) {
           console.log(person);
-          $('.list-group').append("<a class='list-group-item list-group-item-action flex-column align-items-start' data-toggle='modal' data-target='#detailsModalCenter' data-firstname='Jan' data-surname='Kowalski' data-city='Warszawa' data-postcode='00-000' data-address='Hoża 20'><h4>" + person.firstname + " " + person.surname + "</h4><div class='row'><div class='col-sm-12 col-md-4'><h6>Miasto: " + person.city + "</h6></div><div class='col-sm-12 col-md-4'><h6>Kod pocztowy: " + person.postcode + "</h6></div><div class='col-sm-12 col-md-4'><h6>Ulica: " + person.address + "</h6></div></div><p class='mb-1'>" + person.description + "</p>  </a>");
-          //   <a class="list-group-item list-group-item-action flex-column align-items-start" data-toggle="modal"
-          //   data-target="#detailsModalCenter" data-firstname="Jan" data-surname="Kowalski" data-city="Warszawa" data-postcode="00-000"
-          //   data-address="Hoża 20">
-          //   <h4>Jan Kowalski</h4>
-          //   <div class="row">
-          //     <div class="col-sm-12 col-md-4">
-          //       <h6>Miasto: Warszawa</h6>
-          //     </div>
-          //     <div class="col-sm-12 col-md-4">
-          //       <h6>Kod pocztowy: 00-000</h6>
-          //     </div>
-          //     <div class="col-sm-12 col-md-4">
-          //       <h6>Ulica: Hoża 20</h6>
-          //     </div>
-          //   </div>
-          //   <p class="mb-1">Doktor medycyny. Miłośnik sportów ekstremalnych.</p>
-          // </a>
+          $('.list-group').append("<a class='list-group-item list-group-item-action flex-column align-items-start' target='_blank' rel='noopener noreferrer' href='details.html?personID=" + person._id + "'><h4>" + person.firstname + " " + person.surname + "</h4><div class='row'><div class='col-sm-12 col-md-4'><h6>Miasto: " + person.city + "</h6></div><div class='col-sm-12 col-md-4'><h6>Kod pocztowy: " + person.postcode + "</h6></div><div class='col-sm-12 col-md-4'><h6>Ulica: " + person.address + "</h6></div></div><p class='mb-1'>" + person.description + "</p>  </a>");
         });
       })
     </script>

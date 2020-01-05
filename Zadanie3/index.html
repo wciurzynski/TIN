@@ -21,8 +21,14 @@
       <form id="mainForm" class="needs-validation" novalidate>
         <div class="form-group">
           <label for="inputFirstname" data-error="Firstname2" data-success="What a good Firstname">Firstname</label>
-          <input type="text" class="form-control" id="inputFirstname" oninput="checkFirstname()" required
-            aria-describedby="inputFirstnameHelp" placeholder="Enter firstname" pattern="[a-zA-Z]{3,}">
+          <div class="input-group">
+      
+            <input type="text" class="form-control" id="inputFirstname" oninput="checkFirstname()" required
+              aria-describedby="inputFirstnameHelp" placeholder="Enter firstname" pattern="[a-zA-Z]{3,}">
+              <div class="invalid-tooltip">
+                  Your firstname must be min 3 characters long, contain only letters.
+                </div>
+          </div>
         </div>
         <div class="form-group">
           <label for="inputSecondName">Second Name</label>
@@ -42,7 +48,7 @@
         <div class="form-group">
           <label for="selectContactType">Preferred contact form</label>
           <select class="form-control" id="selectContactType" required>
-            <option value="none" selected disabled hidden></option>
+            <!-- <option value="none" selected disabled hidden></option> -->
             <option>Telephone</option>
             <option>Email</option>
           </select>
@@ -120,6 +126,8 @@
       }, false);
     })();
 
+    document.getElementById("selectContactType").selectedIndex = -1;
+
     $.ajax({
       url: "https://api.openweathermap.org/data/2.5/weather?q=Warsaw,POL",
       method: "get",
@@ -130,9 +138,9 @@
     }).done(function (res) {
       console.log(res); //dostaliśmy odpowiedź z serwera, wypisujemy ją
       var weather = res.weather[0].main;
-      weather += ", temp " + Math.round( res.main.temp - 273.15) + "°C"
+      weather += ", temp " + Math.round(res.main.temp - 273.15) + "°C"
       console.log(weather);
-      document.getElementById("weather").innerHTML  = weather
+      document.getElementById("weather").innerHTML = weather
     })
 
     function checkForm(e) {

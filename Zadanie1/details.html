@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <title>Listing + details!</title>
+</head>
+
+<body>
+
+  <div>
+    <div class="container">
+      <h1 class="my-4">Jan Kowalski
+        <small>Doktor medycyny</small>
+      </h1>
+
+      <!-- Portfolio Item Row -->
+      <div class="row">
+
+        <div class="col-md-7 col-sm-12">
+          <img class="img-fluid" src="john_doe.jpg" alt="">
+        </div>
+
+        <div class="col-md-5 col-sm-12">
+          <h4 id="age" class="my-3"></h4>
+          <h4 id="city" class="my-3"></h4>
+          <h4 id="postcode" class="my-3"></h4>
+          <h4 id="address" class="my-3"></h4>
+          <p id="description"></p>
+          <h3 class="my-3">Cele życiowe</h3>
+          <ul id="life_goals">
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+      integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+    <script>
+
+      const urlParams = new URLSearchParams(window.location.search);
+      var personID = urlParams.get('personID');
+      console.log(personID);
+
+      $.ajax({
+        url: "http://tin.pl:3000/person/" + personID,
+        method: "get",
+        dataType: "jsonp",
+      }).done(function (res) {
+        var person = res.data;
+        console.log(person);
+        document.getElementById("age").innerText = "Wiek: " + person.age;
+        document.getElementById("city").innerText = "Miasto: " + person.city;
+        document.getElementById("postcode").innerText = "Kod pocztowy: " + person.postcode;
+        document.getElementById("address").innerText = "Ulica: " + person.address;
+        document.getElementById("description").innerText = person.description;
+        person.life_goals.forEach(function (life_goal) {
+          $("#life_goals").append('<li>' + life_goal + '</li>');
+        }
+        )
+      })
+
+    </script>
+</body>
+
+</html>
