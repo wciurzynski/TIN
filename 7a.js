@@ -31,7 +31,7 @@ dispatcher.onPost("/add", function(req, res) {
         res.end('Second number must be int');
     }
     res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end(firstNumber + secondNumber);
+    res.end("Result " + String(firstNumber + secondNumber));
 });
 
 dispatcher.onPost("/sub", function(req, res) {
