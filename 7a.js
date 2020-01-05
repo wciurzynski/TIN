@@ -54,16 +54,16 @@ function compute(req, res, method) {
 
     res.writeHead(200, {'Content-Type': 'text/plain'});
     if (method === 'add'){
-        res.end("Result " + String(query.firstNumber + query.secondNumber));
+        res.end("Result " + String(firstNumber + secondNumber));
     } else if (method === 'sub'){
-        res.end("Result " + String(query.firstNumber - query.secondNumber));
+        res.end("Result " + String(firstNumber - secondNumber));
     } else if (method === 'mul'){
-        res.end("Result " + String(query.firstNumber * query.secondNumber));
+        res.end("Result " + String(firstNumber * secondNumber));
     } else if (method === 'div'){
-        res.end("Result " + String(query.firstNumber / query.secondNumber));
+        res.end("Result " + String(firstNumber / secondNumber));
     } else {
         res.writeHead(400, {'Content-Type': 'text/plain'});
-        res.end("Result method");
+        res.end("Invalid method");
     }
 
  }
