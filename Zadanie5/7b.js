@@ -23,8 +23,8 @@ router.get('/formdata', function (req, res) {
 });
 
 router.post('/jsondata', function (req, res) {
-    console.log(request.body);
-    res.render('formdata', { firstname: request.firstname, surname: request.surname, city: request.city });
+    console.log(req.body);
+    res.render('formdata', { firstname: req.firstname, surname: req.surname, city: req.city });
 });
 
 app.use('/', router);
