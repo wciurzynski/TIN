@@ -4,6 +4,7 @@ const path = require('path');
 const router = express.Router();
 
 app.set('view engine', 'pug');
+app.use(express.bodyParser());
 
 router.get('/hello', function (req, res) {
     res.send('hello world');
@@ -19,6 +20,11 @@ router.get('/formdata', function (req, res) {
     var city = req.query.city;
 
     res.render('formdata', { firstname: firstname, surname: surname, city: city });
+});
+
+router.post('/jsondata', function (req, res) {
+    console.log(request.body);
+    res.render('formdata', { firstname: request.firstname, surname: request.surname, city: request.city });
 });
 
 app.use('/', router);
