@@ -14,11 +14,9 @@ router.get('/form', function (req, res) {
 });
 
 router.post('/formdata', function (req, res) {
-    var parts = url.parse(req.url, true);
-    var query = parts.query;
-    var firstname = query.firstname;
-    var surname = query.surname;
-    var city = query.city;
+    var firstname = req.query.firstname;
+    var surname = req.query.surname;
+    var city = req.query.city;
 
     console.log(firstname);
     console.log(surname);
