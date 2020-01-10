@@ -4,7 +4,7 @@ const path = require('path');
 const router = express.Router();
 
 app.set('view engine', 'pug');
-app.use(express.bodyParser());
+app.use(express.json());
 
 router.get('/hello', function (req, res) {
     res.send('hello world');
