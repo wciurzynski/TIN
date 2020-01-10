@@ -18,9 +18,6 @@ router.get('/formdata', function (req, res) {
     var surname = req.query.surname;
     var city = req.query.city;
 
-    console.log(firstname);
-    console.log(surname);
-    console.log(city);
     res.render('formdata', { firstname: firstname, surname: surname, city: city });
 });
 
