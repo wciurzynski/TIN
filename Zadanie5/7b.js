@@ -13,7 +13,7 @@ router.get('/form', function (req, res) {
     res.sendFile(path.join(__dirname + '/form.html'));
 });
 
-router.post('/formdata', function (req, res) {
+router.get('/formdata', function (req, res) {
     var firstname = req.query.firstname;
     var surname = req.query.surname;
     var city = req.query.city;
