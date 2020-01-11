@@ -11,55 +11,174 @@
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
   <title>Listing + details!</title>
+
+  <style>
+    .invalid-tooltip {
+      position: absolute;
+      top: 0;
+      /* left: 0;
+      right: 0; */
+      /* bottom: 0; */
+      /* top: -2px; */
+      color: red;
+      /* opacity:0.9; */
+      background-color: white;
+    }
+
+    .container {
+      width: 400px;
+      margin: 10px auto;
+      padding: 10px;
+      background-color: #5bc0de;
+    }
+  </style>
+
 </head>
 
 <body>
 
   <div>
     <div class="container">
-      <p id="weather">test</p>
+      <p id="weather">weather</p>
       <form id="mainForm" class="needs-validation" novalidate>
-        <div class="form-group">
-          <label for="inputFirstname">Firstname</label>
-          <input type="text" class="form-control" id="inputFirstname" oninput="checkFirstname()" required
-            aria-describedby="inputFirstnameHelp" placeholder="Enter firstname" pattern="[a-zA-Z]{3,}">
-            <div class="form-control-feedback">
+        <div class="form-row">
+          <div class="col-sm-12 mb-3">
+            <label for="inputFirstname">Imię</label>
+            <input type="text" class="form-control" id="inputFirstname" oninput="checkFirstname()" required
+              aria-describedby="inputFirstnameHelp" placeholder="Wpisz imię" pattern="[a-zA-Z]{3,}">
+            <div class="invalid-tooltip">
+              Obowiązkowe, min 3 znaki, tylko litery.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-md-12 mb-3">
+            <label for="inputSecondName">Drugie imię</label>
+            <input type="text" class="form-control" id="inputSecondName" oninput="checkSecondName()" aria-describedby="inputSecondNameHelp"
+              placeholder="Wpisz drugie imię" pattern="[a-zA-Z]{3,}">
+            <div class="invalid-tooltip">
+              Mininum 3 znaki, tylko litery.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-md-12 mb-3">
+            <label for="inputSurname">Nazwisko</label>
+            <input type="text" class="form-control" id="inputSurname" oninput="checkSurname()" required aria-describedby="inputSurnameHelp"
+              placeholder="Wpisz nazwisko" pattern="^[a-zA-Z][a-zA-Z\-]{1,}[^\-]$">
+            <div class="invalid-tooltip">
+              Obowiązkowe, min 3 znaki, tylko litery i znak myślnika.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-md-12 mb-3">
+            <label for="inputPhoneNumber">Numer telefonu</label>
+            <input type="tel" in class="form-control bfh-phone" id="inputPhoneNumber" oninput="checkPhoneNumber()" required
+              aria-describedby="inputPhoneNumberHelp" placeholder="Wpisz numer telefonu" pattern="[0-9]{3} [0-9]{3} [0-9]{3}">
+            <div class="invalid-tooltip">
+              Obowiązkowe, wymagane 9 cyfr.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-md-12 mb-3">
+            <label for="selectContactType">Preferowana forma kontaktu</label>
+            <select class="form-control" id="selectContactType" required>
+              <!-- <option value="none" selected disabled hidden></option> -->
+              <option>Telefon</option>
+              <option>E-mail</option>
+            </select>
+            <div class="invalid-tooltip">
+              Obowiązkowe.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-md-12 mb-3">
+            <label for="inputFromDate">Data od</label>
+            <input type="date" class="form-control" id="inputFromDate" oninput="checkFromDate()" required
+              aria-describedby="inputFromDateHelp" placeholder="Wpisz datę od">
+            <div class="invalid-tooltip">
+              Obowiązkowe.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-md-12 mb-3">
+            <label for="inputToDate">Data do</label>
+            <input type="date" class="form-control" id="inputToDate" oninput="checkToDate()" required aria-describedby="inputToDateHelp"
+              placeholder="Wpisz datę do">
+            <div class="invalid-tooltip">
+              Obowiązkowe.
+            </div>
+          </div>
+        </div>
+
+        <!-- <label for="inputFirstname">Firstname</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="inputFirstname" oninput="checkFirstname()" required
+              aria-describedby="inputFirstnameHelp" placeholder="Enter firstname" pattern="[a-zA-Z]{3,}">
+            <div class="invalid-tooltip">
+              Looks good!
+            </div>
+          </div> -->
+        <!-- <label for="inputSecondName">Second Name</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="inputSecondName" oninput="checkSecondName()"
+                aria-describedby="inputSecondNameHelp" placeholder="Enter second name" pattern="[a-zA-Z]{3,}">
+              <div class="invalid-tooltip">
                 Looks good!
               </div>
-        </div>
-        <div class="form-group">
-          <label for="inputSecondName">Second Name</label>
-          <input type="text" class="form-control" id="inputSecondName" oninput="checkSecondName()" aria-describedby="inputSecondNameHelp"
-            placeholder="Enter second name" pattern="[a-zA-Z]{3,}">
-        </div>
-        <div class="form-group">
-          <label for="inputSurname">Surname</label>
+            </div> -->
+        <!-- <label for="inputSurname">Surname</label>
+        <div class="input-group">
           <input type="text" class="form-control" id="inputSurname" oninput="checkSurname()" required aria-describedby="inputSurnameHelp"
             placeholder="Enter Surname" pattern="^[a-zA-Z][a-zA-Z\-]{1,}[^\-]$">
-        </div>
-        <div class="form-group">
-          <label for="inputPhoneNumber">Phone Number</label>
+          <div class="invalid-tooltip">
+            Looks good!
+          </div>
+        </div> -->
+        <!-- <label for="inputPhoneNumber">Phone Number</label>
+        <div class="input-group">
           <input type="tel" in class="form-control bfh-phone" id="inputPhoneNumber" oninput="checkPhoneNumber()" required
             aria-describedby="inputPhoneNumberHelp" placeholder="Enter phone number" pattern="[0-9]{3} [0-9]{3} [0-9]{3}">
-        </div>
-        <div class="form-group">
-          <label for="selectContactType">Preferred contact form</label>
+          <div class="invalid-tooltip">
+            Looks good!
+          </div>
+        </div> -->
+        <!-- <label for="selectContactType">Preferred contact form</label>
+        <div class="input-group">
           <select class="form-control" id="selectContactType" required>
-            <!-- <option value="none" selected disabled hidden></option> -->
             <option>Telephone</option>
             <option>Email</option>
           </select>
-        </div>
-        <div class="form-group">
-          <label for="inputFromDate">From Date</label>
+          <div class="invalid-tooltip">
+            Looks good!
+          </div>
+        </div> -->
+        <!-- <label for="inputFromDate">From Date</label>
+        <div class="input-group">
           <input type="date" class="form-control" id="inputFromDate" oninput="checkFromDate()" required aria-describedby="inputFromDateHelp"
             placeholder="Enter from date">
-        </div>
-        <div class="form-group">
-          <label for="inputToDate">To Date</label>
+          <div class="invalid-tooltip">
+            Looks good!
+          </div>
+        </div> -->
+        <!-- <label for="inputToDate">To Date</label>
+        <div class="input-group">
           <input type="date" class="form-control" id="inputToDate" oninput="checkToDate()" required aria-describedby="inputToDateHelp"
             placeholder="Enter to date">
-        </div>
+          <div class="invalid-tooltip">
+            Looks good!
+          </div>
+        </div> -->
 
         <!-- <div class="form-group">
           <label for="inputEmail">Email address</label>
@@ -74,7 +193,7 @@
           <input type="checkbox" class="form-check-input" id="check">
           <label class="form-check-label" for="check">Check me out</label>
         </div> -->
-        <button id='submitBtn' type="submit" class="btn btn-primary">Submit</button>
+        <button id='submitBtn' type="submit" class="btn btn-primary">Potwierdź</button>
       </form>
     </div>
   </div>
