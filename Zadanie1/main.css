@@ -30,7 +30,7 @@ html, body {
 	width: 100%;
 	color: white;
 	text-align: center;
-	padding-top: 10px;
+	padding-top: 0px;
   }
 
 #footer-copyright {
@@ -46,6 +46,11 @@ html, body {
 
 ul {
 	list-style: none;
+	padding-left: 0;
+}
+
+p {
+	font-size: 15px;
 }
 
 li a {
@@ -56,12 +61,12 @@ li a {
 	color: #ff8d1e;
 }
 
-/* footer { font-size: 12px;height:50px;color:#FFF;text-align:center; }
-footer p { padding-top:15px; } */
-
-/* .navbar-custom {
-	background-color: #bdbdbd;
-} */
+.hl {
+	background: #839FAD none repeat scroll 0 0;
+	display: inline-block;
+	height: 1px;
+	width: 30%;
+}
 
 .navbar
 {
