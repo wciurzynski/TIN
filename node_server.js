@@ -9,62 +9,47 @@ app.get('/', function (req, res) {
     res.send('Hello World!');
 });
 
-app.post('/person/init', function (req, res) {
+app.post('/product/init', function (req, res) {
 
 
     person_list = [
         {
-            "firstname": "Jan",
-            "surname": "Kowalski",
-            "city": "Warszawa",
-            "postcode": "00-000",
-            "address": "Hoża 20",
-            "age": 30,
-            "description": "Miłośnik sportów ekstremalnych. Lubi spędzać czas ze swoją rodziną. Pracuje jako lekarz w jednej z przychodni",
-            "life_goals": [
-                "Wybudować dom",
-                "Zwiedzić USA",
-                "Napisać własną książke o życiu lekarza"
+            "name": "Bluza męska czarna",
+            "image_url": "",
+            "category": "Bluzy",
+            "description": "Bluza męska czarna wszystkie rozmiary",
+            "price": "100 zł",
+            "size": [
+                "S",
+                "M",
+                "L",
+                "XL",
             ]
         },
         {
-            "firstname": "Mirosław",
-            "surname": "Agawski",
-            "city": "Szczecin",
-            "postcode": "10-020",
-            "address": "Trybunalska 31",
-            "age": 31,
-            "description": "Lorem ipsum dolor sit amet",
-            "life_goals": [
-                "Lorem ipsum dolor sit amet",
-                "Lorem ipsum dolor sit amet"
+            "name": "Bluza męska niebieska",
+            "image_url": "",
+            "category": "Bluzy",
+            "description": "Bluza męska niebieska wszystkie rozmiary",
+            "price": "100 zł",
+            "size": [
+                "S",
+                "M",
+                "L",
+                "XL",
             ]
         },
         {
-            "firstname": "Tomasz",
-            "surname": "Król",
-            "city": "Gdańsk",
-            "postcode": "11-022",
-            "address": "Główna 1",
-            "age": 32,
-            "description": "Lorem ipsum dolor sit amet",
-            "life_goals": [
-                "Lorem ipsum dolor sit amet"
-            ]
-        },
-        {
-            "firstname": "Agata",
-            "surname": "Kowalska",
-            "city": "Warszawa",
-            "postcode": "00-100",
-            "address": "Hoża 25",
-            "age": 33,
-            "description": "Lorem ipsum dolor sit amet",
-            "life_goals": [
-                "Lorem ipsum dolor sit amet",
-                "Lorem ipsum dolor sit amet",
-                "Lorem ipsum dolor sit amet",
-                "Lorem ipsum dolor sit amet",
+            "name": "Spodnie damskie jeans",
+            "image_url": "",
+            "category": "Spodnie",
+            "description": "Spodnie damskie jeans wszystkie rozmiary",
+            "price": "100 zł",
+            "size": [
+                "S",
+                "M",
+                "L",
+                "XL",
             ]
         },
     ]
@@ -77,14 +62,14 @@ app.post('/person/init', function (req, res) {
             console.log(err);
             process.exit(0);
         }
-        client.db('TIN').collection('person').insertMany(person_list);
+        client.db('TIN').collection('product').insertMany(person_list);
 
     });
 
     res.json(person_list);
 });
 
-app.get('/person', function (req, res) {
+app.get('/product', function (req, res) {
 
     MongoClient.connect(url, {
         useNewUrlParser: true,
@@ -95,17 +80,17 @@ app.get('/person', function (req, res) {
             process.exit(0);
         }
 
-        client.db('TIN').collection('person').find({}).toArray(function(err, result) {
+        client.db('TIN').collection('product').find({}).toArray(function(err, result) {
             res.jsonp({"data": result});
         });
     });
 });
 
-app.get('/person/:personID', function (req, res) {
+app.get('/product/:productID', function (req, res) {
 
-    console.log(req.params.personID);
-    if (!ObjectID.isValid(req.params.personID)) {
-        res.status(400).send('PersonID not valid');
+    console.log(req.params.productID);
+    if (!ObjectID.isValid(req.params.productID)) {
+        res.status(400).send('productID not valid');
     }
 
     MongoClient.connect(url, {
@@ -117,7 +102,7 @@ app.get('/person/:personID', function (req, res) {
             process.exit(0);
         }
 
-        client.db('TIN').collection('person').findOne({ _id: ObjectID(req.params.personID) }, (err, item) => {
+        client.db('TIN').collection('product').findOne({ _id: ObjectID(req.params.productID) }, (err, item) => {
             console.log(item);
             res.jsonp({data: item});
           })

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Wojciech Ciurzyński">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css">
+
+  <title>Ciuchy.pl</title>
+</head>
+
+<body>
+
+  <header>
+
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+
+      <a class="navbar-brand" href="#">
+        <img src="img/logo.png" width="75" height="50" class="d-inline-block mr-1" alt="">
+        Ciuchy.pl
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu"
+        aria-expanded="false" aria-label="Przełącznik nawigacji">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainmenu">
+
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"> Strona domowa </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="product_list.html"> Produkty </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="about_us.html"> O nas </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html"> Kontakt </a>
+          </li>
+
+        </ul>
+
+        <form class="form-inline">
+
+          <input class="form-control mr-1" type="search" placeholder="Wyszukaj" aria-label="Wyszukaj">
+          <button class="btn btn-primary" type="submit">Znajdź</button>
+
+        </form>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+  <div class="container" id="main_content">
+    <div id="main" class="list-group container clear-top">
+    </div>
+  </div>
+
+  <footer class="footer bg-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+          <div class="hl"></div>
+          <h5 class="company_name">Ciuchy.pl</h5>
+          <p>Firma powstała z miłości do ubrań. Oferujemy najwyższą jakość.</p>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+          <div class="hl"></div>
+          <h5 class="quick_links">Nawigacja</h5>
+          <ul>
+            <li>
+              <div><a href="index.html">Strona domowa</a></div>
+            </li>
+            <li>
+              <div><a href="product_list.html">Produkty</a></div>
+            </li>
+            <li>
+              <div><a href="about_us.html">O nas</a></div>
+            </li>
+            <li>
+              <div><a href="contact.html">Kontakt</a></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="hl"></div>
+          <h5 class="newsletter">Newsletter</h5>
+          <form>
+            <div class="col-sm-12 mb-3 d-flex justify-content-center">
+              <input id="input_email_newsletter" type="email" class="form-control" required placeholder="Wpisz email"
+                pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$">
+            </div>
+            <input type="submit" class="btn btn-primary " value="Subskrybuj!">
+          </form>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="contact">
+            <div class="hl"></div>
+            <h5>Kontakt</h5>
+            <p>Warszawa<br>Marszałkowska 48</p>
+            <p>Telefon 722-831-977</p>
+            <p><a href="mailto:kontakt@ciuchy.pl" title="kontakt@ciuchy.pl">kontakt@ciuchy.pl</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="footer-copyright">
+      <div class="col-md-12">
+        <p>Copyright Company Name © 2020. All rights reserved.</p>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <script>
+    $.ajax({
+      url: "http://tin.pl:3000/product",
+      method: "get",
+      dataType: "jsonp",
+    }).done(function (res) {
+      console.log(res); //dostaliśmy odpowiedź z serwera, wypisujemy ją
+
+      res.data.forEach(function (product) {
+        console.log(product);
+        $('.list-group').append("<a class='list-group-item list-group-item-action flex-column align-items-start' target='_blank' rel='noopener noreferrer' href='details.html?productID=" + product._id + "'><h4>" + product.name + "</h4><div class='row'><div class='col-sm-12 col-md-4'><h6>Kategoria: " + product.category + "</h6></div><div class='col-sm-12 col-md-4'><h6>Opis: " + product.description + "</h6></div><div class='col-sm-12 col-md-4'><h6>Cena: " + product.price + "</h6></div></div><p class='mb-1'>" + product.description + "</p>  </a>");
+      });
+    })
+  </script>
+</body>
+
+</html>
