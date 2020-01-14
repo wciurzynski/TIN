@@ -18,7 +18,7 @@ app.post('/product/init', function (req, res) {
             "image_url": "",
             "category": "Bluzy",
             "description": "Bluza męska czarna wszystkie rozmiary",
-            "price": "100 zł",
+            "price": 100,
             "size": [
                 "S",
                 "M",
@@ -31,7 +31,7 @@ app.post('/product/init', function (req, res) {
             "image_url": "",
             "category": "Bluzy",
             "description": "Bluza męska niebieska wszystkie rozmiary",
-            "price": "100 zł",
+            "price": 100,
             "size": [
                 "S",
                 "M",
@@ -44,7 +44,7 @@ app.post('/product/init', function (req, res) {
             "image_url": "",
             "category": "Spodnie",
             "description": "Spodnie damskie jeans wszystkie rozmiary",
-            "price": "100 zł",
+            "price": 100,
             "size": [
                 "S",
                 "M",
