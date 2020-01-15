@@ -15,7 +15,7 @@ app.post('/product/init', function (req, res) {
     person_list = [
         {
             "name": "Bluza męska czarna",
-            "image_url": "",
+            "image_url": "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",
             "category": "Bluzy",
             "description": "Bluza męska czarna wszystkie rozmiary",
             "price": 100,
@@ -28,7 +28,7 @@ app.post('/product/init', function (req, res) {
         },
         {
             "name": "Bluza męska niebieska",
-            "image_url": "",
+            "image_url": "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",
             "category": "Bluzy",
             "description": "Bluza męska niebieska wszystkie rozmiary",
             "price": 100,
@@ -41,7 +41,7 @@ app.post('/product/init', function (req, res) {
         },
         {
             "name": "Spodnie damskie jeans",
-            "image_url": "",
+            "image_url": "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",
             "category": "Spodnie",
             "description": "Spodnie damskie jeans wszystkie rozmiary",
             "price": 100,

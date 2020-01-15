@@ -66,6 +66,7 @@
   </header>
   <main role="main" class="flex-shrink-0">
     <div class="container" id="main_content" style="padding: 20px;">
+
     </div>
   </main>
 
@@ -140,28 +141,51 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   <script>
-
+    function addProduct() {
+      console.log("addProduct");
+    }
     const urlParams = new URLSearchParams(window.location.search);
-    var personID = urlParams.get('personID');
-    console.log(personID);
+    var productID = urlParams.get('productID');
+    console.log(productID);
 
-    if (personID !== null) {
+    if (productID !== null) {
       $.ajax({
-        url: "http://tin.pl:3000/person/" + personID,
+        url: "http://tin.pl:3000/product/" + productID,
         method: "get",
         dataType: "jsonp",
       }).done(function (res) {
-        var person = res.data;
-        console.log(person);
-        document.getElementById("age").innerText = "Wiek: " + person.age;
-        document.getElementById("city").innerText = "Miasto: " + person.city;
-        document.getElementById("postcode").innerText = "Kod pocztowy: " + person.postcode;
-        document.getElementById("address").innerText = "Ulica: " + person.address;
-        document.getElementById("description").innerText = person.description;
-        person.life_goals.forEach(function (life_goal) {
-          $("#life_goals").append('<li>' + life_goal + '</li>');
+        var product = res.data;
+        console.log(product);
+        var size_list = "";
+        product.size.forEach(function (size_name) {
+          size_list += size_name + " | ";
+        });
+        if (size_list.length > 0) {
+          size_list = size_list.substring(0, size_list.length - 3);
         }
-        )
+        document.getElementById("main_content").innerHTML = `
+        <div class="d-flex flex-row">
+            <div class="col-12>
+                <div class="image-parent">
+                    <img src="img/support.svg" class="img-fluid" alt="${product.name}" height="auto" width="240px">
+                </div>
+                <h5>${product.name}</h5>
+                    <small>${product.category}</small>
+                <p>${product.description}</p>
+                <h5>Cena ${product.price} zł</h5>
+                    <small style="padding-top: 4px;">Rozmiary: ${size_list}</small>
+                    <button type="button" class="btn btn-primary" onclick="addProduct()">Dodaj do koszyka</button>
+            </div>
+        `;
+        // document.getElementById("age").innerText = "Wiek: " + person.age;
+        // document.getElementById("city").innerText = "Miasto: " + person.city;
+        // document.getElementById("postcode").innerText = "Kod pocztowy: " + person.postcode;
+        // document.getElementById("address").innerText = "Ulica: " + person.address;
+        // document.getElementById("description").innerText = person.description;
+        // person.life_goals.forEach(function (life_goal) {
+        //   $("#life_goals").append('<li>' + life_goal + '</li>');
+        // }
+        // )
       })
     }
 
