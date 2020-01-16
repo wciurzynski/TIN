@@ -69,8 +69,46 @@
   <main role="main" class="flex-shrink-0">
     <div class="container" id="main_content" style="padding: 20px;">
       <div class="list-group container clear-top">
+        <div class="list-group-item list-group-item-action flex-column align-items-start" rel="noopener noreferrer">
+          <div class="row">
+            <div class="col-lg-3 col-xs-12">
+              <div class="d-flex justify-content-center">
+                <img src="https://homepages.cae.wisc.edu/~ece533/images/airplane.png" class="img-fluid rounded">
+              </div>
+            </div>
+            <div class="col-lg-9 col-xs-12">
+              <div class="d-flex flex-column h-100">
+                <div class="d-flex justify-content-between">
+                  <a class="product_name" href="details.html?productID=${product._id}" target="_blank">
+                    Product Code/Name here
+                  </a>
+                  <small style="text-align: end;">
+                    <span>Product Category</span>
+                  </small>
+                </div>
+
+                <p class="price-container">
+                  <span>$199</span>
+                </p>
+                <div class="description">
+                  <p>A Short product description here dj shajdsahdjkshsaldsajsdfsajkld jaskd jskdjsk ajdkld jklasdj klasdjskal djaskld
+                    askldsjakl jdklas jkldasjklsdj aslkj d asdsad sd sadsa
+                    asdasddsadsajnsioadjas iopjskold askl;dsaj dklsdjliasdj
+                    k;djhlksajsa;kldj;k jd;kla s;ld ;asldjasl;djsl; jl;d asjkdsajdsaklsabndkl
+                    ndsl kjnl das
+                  </p>
+                </div>
+
+                <div class="align-self-start mt-auto">
+                  <button class="align-self-end btn btn-primary btn-add-to-cart" onclick="addProduct()">Dodaj do koszyka</button>
+                  <a class="align-self-end btn btn-primary" href="details.html?productID=${product._id}" target="_blank"
+                    role="button">Szczegóły</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
   </main>
 
   <footer class="footer bg-dark mt-auto">
@@ -144,6 +182,10 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   <script>
+    function addProduct() {
+      console.log("addProduct");
+    }
+
     $.ajax({
       url: "http://tin.pl:3000/product",
       method: "get",
@@ -157,7 +199,7 @@
         product.size.forEach(function (size_name) {
           size_list += size_name + " | ";
         });
-        if (size_list.length > 0){
+        if (size_list.length > 0) {
           size_list = size_list.substring(0, size_list.length - 3);
         }
         // $('.list-group').append("<a class='list-group-item list-group-item-action flex-column align-items-start' target='_blank' rel='noopener noreferrer' href='details.html?productID=" + product._id + "'><h4>" + product.name + "</h4><div class='row'><div class='col-sm-12 col-md-4'><h6>Kategoria: " + product.category + "</h6></div><div class='col-sm-12 col-md-4'><h6>Opis: " + product.description + "</h6></div><div class='col-sm-12 col-md-4'><h6>Cena: " + product.price + "</h6></div></div><p class='mb-1'>" + product.description + "</p>  </a>");
