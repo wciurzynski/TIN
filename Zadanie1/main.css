@@ -100,3 +100,78 @@ body
 	font-size: 22px;
 	color: #000;
 }
+
+#weather_container p {
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+}
+
+
+@media (min-width: 576px) {
+	#weather_container img {
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+	#weather_container img {
+		max-width: 60%;
+		height: auto;
+	}
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	#weather_container img {
+		max-width: 50%;
+		height: auto;
+	}
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+	#weather_container img {
+		max-width: 40%;
+		height: auto;
+	}
+}
+
+ /* @include media-breakpoint-down(xs) {
+	#weather_container img {
+		max-width: 100%;
+		height: auto;
+	}
+} */
+
+ /* Small devices (landscape phones, 576px and up) */
+ /* @include media-breakpoint-down(sm) {
+	#weather_container img {
+		width: 1px;
+		height: 1px;
+	}
+} */
+
+/* Medium devices (tablets, 768px and up) */
+/* @include media-breakpoint-down(md) {
+	#weather_container img {
+		max-width: 75%;
+		height: auto;
+	}
+} */
+/* // Large devices (desktops, 992px and up) */
+/* @include media-breakpoint-down(lg) {
+	#weather_container img {
+		max-width: 50%;
+		height: auto;
+	}
+} */
+/* // Extra large devices (large desktops, 1200px and up) */
+/* @include media-breakpoint-down(xl) {
+	#weather_container img {
+		max-width: 25%;
+		height: auto;
+	}
+} */

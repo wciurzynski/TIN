@@ -67,7 +67,9 @@
   </header>
 
   <main role="main" class="flex-shrink-0">
-    <div class="container" id="main_content" style="padding: 20px;">
+    <div class="container" id="main_content">
+      <div id="weather_container" class="container weather text-center" style="padding-top: 10px;">
+      </div>
       <div class="list-group container clear-top">
       </div>
   </main>
@@ -199,6 +201,108 @@
 
       });
     })
+
+    // GOOGLE API GEOLOCATION
+    var map, infoWindow;
+    function initMap() {
+      infoWindow = new google.maps.InfoWindow;
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          $.ajax({
+            url: `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}`,
+            method: "get",
+            dataType: "json",
+            data: {
+              APPID: 'efb2be66ec5d0327c45efe9ae636b127'
+            }
+          }).done(function (res) {
+            console.log(res); //dostaliśmy odpowiedź z serwera, wypisujemy ją
+            let temp = Math.round(res.main.temp - 273.15);
+            let city = res.name;
+            let pressure = res.main.pressure;
+            let wind_speed_ms = res.wind.speed;
+            let weather_icon = res.weather[0].icon;
+            let wind_speed_kh = (wind_speed_ms / 1000 * 3600).toFixed(2);
+
+            switch (weather_icon) {
+              case "01d":
+              case "02d":
+              case "01n":
+              case "02n":
+                image_source = "img/sun.svg";
+                break
+              case "03d":
+              case "04d":
+              case "03n":
+              case "04n":
+                image_source = "img/cloud.svg";
+                break
+              case "09d":
+              case "10d":
+              case "09n":
+              case "10n":
+                image_source = "img/water.svg";
+                break
+              case "11d":
+              case "11n":
+                image_source = "img/hailstorm.svg";
+                break
+              case "13d":
+              case "13n":
+                image_source = "img/snow.svg";
+                break
+              case "50d":
+              case "50n":
+                image_source = "img/wave.svg";
+                break
+            }
+
+            let weather = `
+            <div class="row">
+            <div class="col-3 ml-auto">
+                <img src="${image_source}" class="float-right">
+            </div>
+            <div class="col-3 mr-auto my-auto text-left">
+              <div class="d-flex flex-column h-100">
+                <h5>${temp}°C</h5>
+                <p>Miasto: ${city}</p>
+                <p>Ciśnienie: ${pressure} hPa</p>
+                <p>Wiatr: ${wind_speed_kh} Km/h</p>
+              </div>
+            </div>
+          </div>
+            `;
+
+            document.getElementById("weather_container").innerHTML = weather
+          })
+
+          // var pos = {
+          //   lat: position.coords.latitude,
+          //   lng: position.coords.longitude
+          // };
+          // console.log('lat ' + position.coords.latitude);
+          // console.log('lng ' + position.coords.longitude);
+          // infoWindow.setPosition(pos);
+          // infoWindow.setContent('Location found.');
+          // infoWindow.open(map);
+
+        }, function () {
+          handleLocationError(true, infoWindow);
+        });
+      } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow);
+      }
+    }
+
+    function handleLocationError(browserHasGeolocation, infoWindow) {
+      infoWindow.setContent(browserHasGeolocation ?
+        'Error: The Geolocation service failed.' :
+        'Error: Your browser doesn\'t support geolocation.');
+    }
+
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABnNV9_uIQyviYMAZDr4vkIAELi7a5lSs&callback=initMap">
   </script>
 </body>
 
