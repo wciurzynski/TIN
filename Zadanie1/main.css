@@ -86,6 +86,9 @@ body
     /* line-height: 20px;
     padding: 10px 14px 0px 19px; */
 }
+.description ul {
+	font-size: 14px;
+}
 
 .price-container {
 	font-size: 19px;

@@ -176,12 +176,12 @@
 
         document.getElementById("main_content").innerHTML = `
         <div class="row">
-          <div class="col-12">
+          <div class="col-12 pt-2">
             <div class="d-flex justify-content-center">
               <img src="${product.image_url}" alt="${product.name}" class="img-fluid rounded">
             </div>
           </div>
-          <div class="col-md-8 col-sm-12 col-xs-12 mx-auto py-2 py-md-5 px-0 px-md-5">
+          <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12 mx-auto py-2 py-md-5 px-md-5 px-3">
             <div class="d-flex flex-column h-100">
               <div class="d-flex justify-content-between">
                 <p class="product_name">${product.name}</p>
@@ -197,7 +197,7 @@
                 <p>${size_list}</p>
                 ${meterials}
               </div>
-              <div class="align-self-center align-self-lg-start mt-auto">
+              <div class="align-self-center mt-auto">
                 <button class="btn btn-primary btn-add-to-cart" onclick="addProduct('${product._id}')">Dodaj do koszyka</button>
               </div>
             </div>

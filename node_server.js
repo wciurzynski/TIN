@@ -14,11 +14,11 @@ app.post('/product/init', function (req, res) {
 
     person_list = [
         {
-            "name": "Bluza męska czarna",
-            "image_url": "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",
+            "name": "T-shirt Biały",
+            "image_url": "https://cdn.shoplo.com/0106/products/th2048/aaas/4674-0007-0011-tee.jpg",
             "category": "Bluzy",
-            "description": "Bluza męska czarna wszystkie rozmiary",
-            "price": 100,
+            "description": "T-shirt z kolekcji PLNY x STADIUM™ w kolorze białym z surowo wykończonymi rękawami, kołnierzem i dołem. Uniwersalny element wielu stylizacji.<br> Mocno limitowany drop Stadium X Lecia to kolekcja przygotowana pod szyldem PLNY Merchtedes. Projekty inspirowane retrospekcyjnym albumem Tede & Sir Micha.",
+            "price": 89.00,
             "size": [
                 "S",
                 "M",
