@@ -69,45 +69,6 @@
   <main role="main" class="flex-shrink-0">
     <div class="container" id="main_content" style="padding: 20px;">
       <div class="list-group container clear-top">
-        <div class="list-group-item list-group-item-action flex-column align-items-start" rel="noopener noreferrer">
-          <div class="row">
-            <div class="col-lg-3 col-xs-12">
-              <div class="d-flex justify-content-center">
-                <img src="https://homepages.cae.wisc.edu/~ece533/images/airplane.png" class="img-fluid rounded">
-              </div>
-            </div>
-            <div class="col-lg-9 col-xs-12">
-              <div class="d-flex flex-column h-100">
-                <div class="d-flex justify-content-between">
-                  <a class="product_name" href="details.html?productID=${product._id}" target="_blank">
-                    Product Code/Name here
-                  </a>
-                  <small style="text-align: end;">
-                    <span>Product Category</span>
-                  </small>
-                </div>
-
-                <p class="price-container">
-                  <span>$199</span>
-                </p>
-                <div class="description">
-                  <p>A Short product description here dj shajdsahdjkshsaldsajsdfsajkld jaskd jskdjsk ajdkld jklasdj klasdjskal djaskld
-                    askldsjakl jdklas jkldasjklsdj aslkj d asdsad sd sadsa
-                    asdasddsadsajnsioadjas iopjskold askl;dsaj dklsdjliasdj
-                    k;djhlksajsa;kldj;k jd;kla s;ld ;asldjasl;djsl; jl;d asjkdsajdsaklsabndkl
-                    ndsl kjnl das
-                  </p>
-                </div>
-
-                <div class="align-self-start mt-auto">
-                  <button class="align-self-end btn btn-primary btn-add-to-cart" onclick="addProduct()">Dodaj do koszyka</button>
-                  <a class="align-self-end btn btn-primary" href="details.html?productID=${product._id}" target="_blank"
-                    role="button">Szczegóły</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
   </main>
 
@@ -182,8 +143,8 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   <script>
-    function addProduct() {
-      console.log("addProduct");
+    function addProduct(product_id) {
+      console.log("addProduct " + product_id);
     }
 
     $.ajax({
@@ -202,32 +163,39 @@
         if (size_list.length > 0) {
           size_list = size_list.substring(0, size_list.length - 3);
         }
-        // $('.list-group').append("<a class='list-group-item list-group-item-action flex-column align-items-start' target='_blank' rel='noopener noreferrer' href='details.html?productID=" + product._id + "'><h4>" + product.name + "</h4><div class='row'><div class='col-sm-12 col-md-4'><h6>Kategoria: " + product.category + "</h6></div><div class='col-sm-12 col-md-4'><h6>Opis: " + product.description + "</h6></div><div class='col-sm-12 col-md-4'><h6>Cena: " + product.price + "</h6></div></div><p class='mb-1'>" + product.description + "</p>  </a>");
-        //           <a class="list-group-item list-group-item-action flex-column align-items-start" target="_blank" rel="noopener noreferrer" href="details.html?productID=${product._id}">
 
-        $('.list-group').append(
-          `<div class="list-group-item list-group-item-action flex-column align-items-start" rel="noopener noreferrer">
+        let product_template = `
+        <div class="list-group-item list-group-item-action flex-column align-items-start" rel="noopener noreferrer">
           <div class="row">
-            <div class="col-3 d-flex justify-content-center" style="border-right: 1px solid #333;">
-                <div class="image-parent">
-                    <img src="${product.image_url}" class="img-fluid" alt="${product.name}" height="120px" width="120px">
-                </div>
+            <div class="col-3 px-1 px-lg-2">
+              <div class="d-flex justify-content-center">
+                <img src="${product.image_url}" alt="${product.name}" class="img-fluid rounded">
+              </div>
             </div>
-            <div class="col-9">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5>${product.name}</h5>
-                    <small>${product.category}</small>
+            <div class="col-9 px-1 px-lg-2">
+              <div class="d-flex flex-column h-100">
+                <div class="d-flex justify-content-between">
+                  <a class="product_name" href="details.html?productID=${product._id}" target="_blank">${product.name}</a>
+                  <small style="text-align: end;">
+                    <span>${product.category}</span>
+                  </small>
                 </div>
-                <p>${product.description}</p>
-                <div class="d-flex w-100 justify-content-between">
-                    <h5>Cena ${product.price} zł</h5>
-                    <small style="padding-top: 4px;">Rozmiary: ${size_list}</small>
-                    <a class="btn btn-primary" href="details.html?productID=${product._id}" target="_blank" role="button">Szczegóły</a>
+                <p class="price-container">
+                  <span>${product.price} PLN</span>
+                </p>
+                <div class="description">
+                  <p>${product.description}</p>
                 </div>
+                <div class="align-self-center align-self-lg-start mt-auto">
+                  <button class="btn btn-primary btn-add-to-cart" onclick="addProduct('${product._id}')">Dodaj do koszyka</button>
+                  <a class="btn btn-primary" href="details.html?productID=${product._id}" target="_blank" role="button">Szczegóły</a>
+                </div>
+              </div>
             </div>
           </div>
-        </a>`
-        );
+        </div>
+        `
+        $('.list-group').append(product_template);
 
       });
     })

@@ -24,6 +24,10 @@ app.post('/product/init', function (req, res) {
                 "M",
                 "L",
                 "XL",
+            ],
+            "meterials": [
+                "80% bawełna",
+                "20% poliester"
             ]
         },
         {
@@ -37,6 +41,10 @@ app.post('/product/init', function (req, res) {
                 "M",
                 "L",
                 "XL",
+            ],
+            "meterials": [
+                "85% bawełna",
+                "15% poliester"
             ]
         },
         {
@@ -50,6 +58,10 @@ app.post('/product/init', function (req, res) {
                 "M",
                 "L",
                 "XL",
+            ],
+            "meterials": [
+                "90% bawełna",
+                "10% poliester"
             ]
         },
     ]

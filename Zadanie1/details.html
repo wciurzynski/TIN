@@ -66,7 +66,6 @@
   </header>
   <main role="main" class="flex-shrink-0">
     <div class="container" id="main_content" style="padding: 20px;">
-
     </div>
   </main>
 
@@ -141,8 +140,8 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   <script>
-    function addProduct() {
-      console.log("addProduct");
+    function addProduct(product_id) {
+      console.log("addProduct " + product_id);
     }
     const urlParams = new URLSearchParams(window.location.search);
     var productID = urlParams.get('productID');
@@ -157,35 +156,54 @@
         var product = res.data;
         console.log(product);
         var size_list = "";
-        product.size.forEach(function (size_name) {
-          size_list += size_name + " | ";
-        });
+        if (Array.isArray(product.size)) {
+          product.size.forEach(function (size_name) {
+            size_list += size_name + " | ";
+          });
+        }
         if (size_list.length > 0) {
           size_list = size_list.substring(0, size_list.length - 3);
         }
+
+        var meterials = `<ul>`;
+        if (Array.isArray(product.meterials)) {
+          product.meterials.forEach(function (material_name) {
+            meterials += `<li>${material_name}</li>`;
+          });
+        }
+
+        meterials += `</ul>`;
+
         document.getElementById("main_content").innerHTML = `
-        <div class="d-flex flex-row">
-            <div class="col-12>
-                <div class="image-parent">
-                    <img src="img/support.svg" class="img-fluid" alt="${product.name}" height="auto" width="240px">
-                </div>
-                <h5>${product.name}</h5>
-                    <small>${product.category}</small>
-                <p>${product.description}</p>
-                <h5>Cena ${product.price} zł</h5>
-                    <small style="padding-top: 4px;">Rozmiary: ${size_list}</small>
-                    <button type="button" class="btn btn-primary" onclick="addProduct()">Dodaj do koszyka</button>
+        <div class="row">
+          <div class="col-12">
+            <div class="d-flex justify-content-center">
+              <img src="${product.image_url}" alt="${product.name}" class="img-fluid rounded">
             </div>
+          </div>
+          <div class="col-md-8 col-sm-12 col-xs-12 mx-auto py-2 py-md-5 px-0 px-md-5">
+            <div class="d-flex flex-column h-100">
+              <div class="d-flex justify-content-between">
+                <p class="product_name">${product.name}</p>
+                <small style="text-align: end;">
+                  <span>${product.category}</span>
+                </small>
+              </div>
+              <p class="price-container">
+                <span>${product.price} PLN</span>
+              </p>
+              <div class="description">
+                <p>${product.description}</p>
+                <p>${size_list}</p>
+                ${meterials}
+              </div>
+              <div class="align-self-center align-self-lg-start mt-auto">
+                <button class="btn btn-primary btn-add-to-cart" onclick="addProduct('${product._id}')">Dodaj do koszyka</button>
+              </div>
+            </div>
+          </div>
+        </div>
         `;
-        // document.getElementById("age").innerText = "Wiek: " + person.age;
-        // document.getElementById("city").innerText = "Miasto: " + person.city;
-        // document.getElementById("postcode").innerText = "Kod pocztowy: " + person.postcode;
-        // document.getElementById("address").innerText = "Ulica: " + person.address;
-        // document.getElementById("description").innerText = person.description;
-        // person.life_goals.forEach(function (life_goal) {
-        //   $("#life_goals").append('<li>' + life_goal + '</li>');
-        // }
-        // )
       })
     }
 
