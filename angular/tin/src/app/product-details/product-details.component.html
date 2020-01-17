@@ -1,0 +1,42 @@
+<main role="main" class="flex-shrink-0">
+    <div class="container" id="main_content" style="padding: 20px;">
+        <div class="row">
+            <div class="col-6 pt-2 mx-auto">
+                <div class="d-flex justify-content-center">
+                    <img src="{{product.image_url}}" alt="{{product.name}}" class="img-fluid rounded">
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12 mx-auto py-2 py-md-5 px-md-5 px-3">
+                <div class="d-flex flex-column h-100">
+                    <div class="d-flex justify-content-between">
+                        <p class="product_name">{{product.name}}</p>
+                        <small style="text-align: end;">
+                            <span>{{product.category}}</span>
+                        </small>
+                    </div>
+                    <p class="price-container">
+                        <span>{{product.price}} PLN</span>
+                    </p>
+                    <div class="description">
+                        <p>{{product.description}}</p>
+                        <div class="d-flex justify-content-around">
+                            <ul>
+                                <div *ngFor="let size_name of product.size">
+                                    <li>{{size_name}}</li>
+                                </div>
+                            </ul>
+                            <ul>
+                                <div *ngFor="let material_name of product.meterials">
+                                    <li>{{material_name}}</li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="align-self-center mt-auto">
+                        <button class="btn btn-primary btn-add-to-cart" (click)="addProduct(product._id)">Dodaj do koszyka</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

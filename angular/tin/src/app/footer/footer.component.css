@@ -1,0 +1,27 @@
+.hl {
+	background: #839FAD none repeat scroll 0 0;
+	display: inline-block;
+	height: 1px;
+	width: 30%;
+}
+
+.contact a {
+	color: #ff8d1e;
+}
+
+#input_email_newsletter{
+	width: 150px;
+}
+
+.footer {
+	color: white;
+	text-align: center;
+	padding-top: 0px;
+  }
+
+#footer-copyright {
+	background-color: #303438 ;
+	margin: 0%;
+	padding: 0%;
+	padding-top: 15px;
+}

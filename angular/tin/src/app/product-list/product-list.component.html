@@ -1,0 +1,41 @@
+<main role="main" class="flex-shrink-0">
+    <div class="container" id="main_content">
+        <div id="weather_container" class="container weather text-center" style="padding-top: 10px;">
+        </div>
+        <div class="list-group container clear-top py-4">
+            <div *ngFor="let product of product_list">
+                <div class="list-group-item list-group-item-action flex-column align-items-start" rel="noopener noreferrer">
+                    <div class="row">
+                        <div class="col-3 px-1 px-lg-2">
+                            <div class="d-flex justify-content-center">
+                                <img src="{{product.image_url}}" alt="{{product.name}}" class="img-fluid rounded">
+                            </div>
+                        </div>
+                        <div class="col-9 px-1 px-lg-2">
+                            <div class="d-flex flex-column h-100">
+                                <div class="d-flex justify-content-between">
+                                    <a class="product_name" href="product-details?productID={{product._id}}" target="_blank">{{product.name}}</a>
+                                    <small style="text-align: end;">
+                                        <span>{{product.category}}</span>
+                                    </small>
+                                </div>
+                                <p class="price-container">
+                                    <span>{{product.price}} PLN</span>
+                                </p>
+                                <div class="description">
+                                    <p>{{product.description}}</p>
+                                </div>
+                                <div class="align-self-center align-self-lg-start mt-auto">
+                                    <button class="btn btn-primary btn-add-to-cart" (click)="addProduct(product._id)">Dodaj do
+                                        koszyka</button>
+                                    <a class="btn btn-primary" href="product-details?productID={{product._id}}" target="_blank"
+                                        role="button">Szczegóły</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
