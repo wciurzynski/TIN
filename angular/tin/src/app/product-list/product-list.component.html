@@ -1,22 +1,37 @@
 <main role="main" class="flex-shrink-0">
     <div class="container" id="main_content">
         <div id="weather_container" class="container weather text-center" style="padding-top: 10px;">
-                <div *ngIf="current_weather" class="row">
-                        <div class="col-3 ml-auto">
-                            <img src="{{current_weather.weather_icon_source}}" class="float-right">
-                        </div>
-                        <div class="col-3 mr-auto my-auto text-left">
-                          <div class="d-flex flex-column h-100">
-                            <h5>{{current_weather.temp}}°C</h5>
-                            <p>Miasto: {{current_weather.city}}</p>
-                            <p>Ciśnienie: {{current_weather.pressure}} hPa</p>
-                            <p>Wiatr: {{current_weather.wind_speed_kh}} Km/h</p>
-                          </div>
-                        </div>
-                      </div>
+            <div *ngIf="current_weather" class="row">
+                <div class="col-3 ml-auto">
+                    <img src="{{current_weather.weather_icon_source}}" class="float-right">
+                </div>
+                <div class="col-3 mr-auto my-auto text-left">
+                    <div class="d-flex flex-column h-100">
+                        <h5>{{current_weather.temp}}°C</h5>
+                        <p>Miasto: {{current_weather.city}}</p>
+                        <p>Ciśnienie: {{current_weather.pressure}} hPa</p>
+                        <p>Wiatr: {{current_weather.wind_speed_kh}} Km/h</p>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="row">
+            <div class="col-sm-3 mx-auto pt-3">
+                <select class="form-control" (change)="onChangeCategory($event)">
+                    <option value="none" selected></option>
+                    <option *ngFor="let category of category_list" value="{{category.name}}">{{category.name}}</option>
+                </select>
+            </div>
+        </div>
+
         <div class="list-group container clear-top py-4">
-            <div *ngFor="let product of product_list">
+            <!-- <ng-container *ngIf="items">
+                <ul *ngFor="let item of items">
+                    <li></li>
+                </ul>
+            </ng-container> -->
+            <div *ngFor="let product of product_list | productFilter : selected_category">
                 <div class="list-group-item list-group-item-action flex-column align-items-start" rel="noopener noreferrer">
                     <div class="row">
                         <div class="col-3 px-1 px-lg-2">
@@ -27,7 +42,8 @@
                         <div class="col-9 px-1 px-lg-2">
                             <div class="d-flex flex-column h-100">
                                 <div class="d-flex justify-content-between">
-                                    <a class="product_name" href="product-details?productID={{product._id}}" target="_blank">{{product.name}}</a>
+                                    <a class="product_name" href="product-details?productID={{product._id}}"
+                                        target="_blank">{{product.name}}</a>
                                     <small style="text-align: end;">
                                         <span>{{product.category}}</span>
                                     </small>

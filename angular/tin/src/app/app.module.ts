@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AgmCoreModule } from '@agm/core';
 import { OpenWeatherService } from './open-weather.service';
 import { CategoryService } from './category.service';
+import { ProductFilterPipe } from './product-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CategoryService } from './category.service';
     AboutUsComponent,
     ContactComponent,
     routingComponents,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ProductFilterPipe
   ],
   imports: [
     BrowserModule,

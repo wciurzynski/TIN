@@ -14,6 +14,7 @@ export class ProductListComponent implements OnInit {
   public product_list = [];
   public category_list = [];
   public current_weather: IOpenWeather;
+  public selected_category = null;
   latitude: number;
   longitude: number;
 
@@ -27,7 +28,9 @@ export class ProductListComponent implements OnInit {
       .subscribe(data => this.product_list = data['data']);
 
     this._categoryService.getCategoryList()
-      .subscribe(data => this.category_list = data['data']);
+      .subscribe(data => {
+        this.category_list = data['data'];
+      });
 
     this.setCurrentLocation();
   }
@@ -36,17 +39,23 @@ export class ProductListComponent implements OnInit {
     console.log("addProduct " + product_id);
   }
 
+  onChangeCategory(event: any){
+    console.log("onChangeCategory ");
+    if (event.target.value === 'none'){
+      this.selected_category = null;
+    } else {
+      this.selected_category = event.target.value;
+    }
+  }
+
   // Get Current Location Coordinates
   private setCurrentLocation() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
-        console.log("set latitude " + this.latitude);
-        console.log("set longitude " + this.longitude);
         this._openWeatherService.getCurrentWeather(this.latitude, this.longitude)
           .subscribe(data => {
-            console.log(data);
             let _current_weather = {
               temp: Math.round(data['main']['temp'] - 273.15),
               city: data['name'],
@@ -89,7 +98,6 @@ export class ProductListComponent implements OnInit {
                 break
             }
             this.current_weather = _current_weather;
-            console.log(this.current_weather);
           });
       });
     }

@@ -23,7 +23,6 @@ export class OpenWeatherService {
       .set('lon', longitude)
       .set('APPID', 'efb2be66ec5d0327c45efe9ae636b127')
     };
-    console.log(httpOptions);
 
     return this.http.get<IOpenWeather[]>(this._urlCurrentWeather, httpOptions);
   }
