@@ -13,6 +13,9 @@ import { ContactComponent } from './contact/contact.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductService } from './product.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AgmCoreModule } from '@agm/core';
+import { OpenWeatherService } from './open-weather.service';
+import { CategoryService } from './category.service';
 
 @NgModule({
   declarations: [
@@ -29,10 +32,16 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyABnNV9_uIQyviYMAZDr4vkIAELi7a5lSs',
+      libraries: ['places']
+    })
   ],
   providers: [
-    ProductService
+    ProductService,
+    OpenWeatherService,
+    CategoryService,
   ],
   bootstrap: [AppComponent]
 })

@@ -107,6 +107,10 @@ body
 	padding: 0;
 }
 
+#weather_container img {
+	max-width: 100%;
+	height: auto;
+}
 
 @media (min-width: 576px) {
 	#weather_container img {

@@ -22,7 +22,7 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit() {
     this._productService.getProductByID(this.productID)
-    .subscribe(data => this.product = data);
+    .subscribe(data => this.product = data['data']);
   }
 
   addProduct(product_id) {

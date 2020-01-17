@@ -203,6 +203,23 @@ app.get('/product', function (req, res) {
     });
 });
 
+app.get('/category', function (req, res) {
+
+    MongoClient.connect(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }, function (err, client) {
+        if (err) {
+            console.log(err);
+            process.exit(0);
+        }
+
+        client.db('TIN').collection('category').find({}).toArray(function(err, result) {
+            res.jsonp({"data": result});
+        });
+    });
+});
+
 app.get('/product/:productID', function (req, res) {
 
     console.log(req.params.productID);

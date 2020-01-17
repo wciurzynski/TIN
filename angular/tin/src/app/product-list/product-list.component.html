@@ -1,6 +1,19 @@
 <main role="main" class="flex-shrink-0">
     <div class="container" id="main_content">
         <div id="weather_container" class="container weather text-center" style="padding-top: 10px;">
+                <div *ngIf="current_weather" class="row">
+                        <div class="col-3 ml-auto">
+                            <img src="{{current_weather.weather_icon_source}}" class="float-right">
+                        </div>
+                        <div class="col-3 mr-auto my-auto text-left">
+                          <div class="d-flex flex-column h-100">
+                            <h5>{{current_weather.temp}}°C</h5>
+                            <p>Miasto: {{current_weather.city}}</p>
+                            <p>Ciśnienie: {{current_weather.pressure}} hPa</p>
+                            <p>Wiatr: {{current_weather.wind_speed_kh}} Km/h</p>
+                          </div>
+                        </div>
+                      </div>
         </div>
         <div class="list-group container clear-top py-4">
             <div *ngFor="let product of product_list">

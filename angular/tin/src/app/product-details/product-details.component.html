@@ -20,12 +20,12 @@
                     <div class="description">
                         <p>{{product.description}}</p>
                         <div class="d-flex justify-content-around">
-                            <ul>
+                            <ul *ngIf="product.size.length > 0">
                                 <div *ngFor="let size_name of product.size">
                                     <li>{{size_name}}</li>
                                 </div>
                             </ul>
-                            <ul>
+                            <ul *ngIf="product.meterials.length > 0">
                                 <div *ngFor="let material_name of product.meterials">
                                     <li>{{material_name}}</li>
                                 </div>

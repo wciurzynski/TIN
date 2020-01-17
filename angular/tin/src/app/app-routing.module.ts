@@ -9,6 +9,9 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 
 const routes: Routes = [
   {
+    path: '', component: MainPageComponent,
+  },
+  {
     path: 'main-page', component: MainPageComponent,
   },
   {
