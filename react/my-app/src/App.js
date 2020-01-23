@@ -31,10 +31,10 @@ export default function App() {
             <TaskA property='test' />
           </Route>
           <Route path="/taskB">
-            <TaskB />
+            <TaskB name='Ala' />
           </Route>
           <Route path="/taskC">
-            <TaskC />
+            <MyForm />
           </Route>
           <Route path="/">
             <TaskA property='test' />
@@ -53,12 +53,68 @@ function TaskA({ property }) {
   );
 }
 
-function TaskB() {
-  return <h2>TaskB</h2>;
+function TaskB(props) {
+  return <h1>Cześć, {props.name}</h1>;
 }
 
 function TaskC() {
-  return <h2>TaskC</h2>;
+  return (
+    <form>
+      <input type="submit" value="Wyślij" />
+    </form>
+  );
+}
+
+class MyForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: '',
+      number: null,
+      email: '',
+    };
+  }
+  myChangeHandler = (event) => {
+    let nam = event.target.name;
+    let val = event.target.value;
+    this.setState({ [nam]: val });
+  }
+  mySubmitHandler = (event) => {
+    event.preventDefault();
+    if (!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.state.email)) {
+      alert("Not valid email");
+    }
+  }
+  render() {
+    return (
+      <form onSubmit={this.mySubmitHandler}>
+        <p>Tekst {this.state.text}</p>
+        <p>Liczba {this.state.number}</p>
+        <p>Email {this.state.email}</p>
+        <p>Wpisz tekst:</p>
+        <input
+          type='text'
+          name='text'
+          onChange={this.myChangeHandler}
+        />
+        <p>Wpisz liczbę:</p>
+        <input
+          type='number'
+          name='number'
+          onChange={this.myChangeHandler}
+        />
+        <p>Wpisz email:</p>
+        <input
+          type='email'
+          name='email'
+          onChange={this.myChangeHandler}
+        />
+        <br />
+        <br />
+        <input type='submit' />
+      </form >
+    );
+  }
 }
 // function App() {
 //   return (

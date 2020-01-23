@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
@@ -35,6 +37,7 @@ import { ProductFilterPipe } from './product-filter.pipe';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgbModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyABnNV9_uIQyviYMAZDr4vkIAELi7a5lSs',
       libraries: ['places']
