@@ -19,6 +19,8 @@ import { AgmCoreModule } from '@agm/core';
 import { OpenWeatherService } from './open-weather.service';
 import { CategoryService } from './category.service';
 import { ProductFilterPipe } from './product-filter.pipe';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { ProductFilterPipe } from './product-filter.pipe';
     ContactComponent,
     routingComponents,
     ProductDetailsComponent,
-    ProductFilterPipe
+    ProductFilterPipe,
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

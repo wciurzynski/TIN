@@ -48,6 +48,10 @@ app-root {
 	height: auto;
 }
 
+#search{
+	margin-right: 10px;
+}
+
 .btn-add-to-cart{
 	background-color: #c82333;
 	border-color: #c82333;

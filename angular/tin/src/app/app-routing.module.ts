@@ -5,6 +5,8 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 const routes: Routes = [
@@ -25,6 +27,12 @@ const routes: Routes = [
   },
   {
     path: 'product-details', component: ProductDetailsComponent,
+  },
+  {
+    path: 'sign-in', component: SignInComponent,
+  },
+  {
+    path: 'sign-up', component: SignUpComponent,
   }
 ];
 
@@ -38,5 +46,7 @@ export const routingComponents = [
   ProductListComponent,
   AboutUsComponent,
   ContactComponent,
-  ProductDetailsComponent
+  ProductDetailsComponent,
+  SignInComponent,
+  SignUpComponent,
 ]

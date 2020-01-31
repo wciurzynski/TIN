@@ -12,4 +12,12 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
+  sign_in() {
+    console.log("sign_in");
+  }
+
+  sign_up() {
+    console.log("sign_up");
+  }
+
 }
