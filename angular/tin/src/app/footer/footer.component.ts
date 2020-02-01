@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  loginPage;
+
+  constructor(
+    private _categoryService: CategoryService,
+  ) {
+    this.loginPage = this._categoryService.getLoginPage();
+  }
 
   ngOnInit() {
   }

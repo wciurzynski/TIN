@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { ActivatedRoute } from '@angular/router';
+import { CategoryService } from '../category.service';
+
 
 @Component({
   selector: 'app-product-details',
@@ -12,8 +14,13 @@ export class ProductDetailsComponent implements OnInit {
   public product = null;
   private productID;
 
-  constructor(private _productService: ProductService, private route: ActivatedRoute) {
+  constructor(
+    private _productService: ProductService,
+     private route: ActivatedRoute,
+     private _categoryService: CategoryService,
+     ) {
     console.log('Called Constructor');
+    this._categoryService.setLoginPage(false);
     this.route.queryParams.subscribe(params => {
       this.productID = params['productID'];
       console.log(this.productID);

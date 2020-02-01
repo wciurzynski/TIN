@@ -21,7 +21,10 @@ export class ProductListComponent implements OnInit {
   constructor(
     private _categoryService: CategoryService,
     private _productService: ProductService,
-    private _openWeatherService: OpenWeatherService) { }
+    private _openWeatherService: OpenWeatherService
+  ) {
+    this._categoryService.setLoginPage(false);
+  }
 
   ngOnInit() {
     this._productService.getProductList()
@@ -39,9 +42,9 @@ export class ProductListComponent implements OnInit {
     console.log("addProduct " + product_id);
   }
 
-  onChangeCategory(event: any){
+  onChangeCategory(event: any) {
     console.log("onChangeCategory ");
-    if (event.target.value === 'none'){
+    if (event.target.value === 'none') {
       this.selected_category = null;
     } else {
       this.selected_category = event.target.value;

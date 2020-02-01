@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <main role="main" class="flex-shrink-0">
     <div class="container" id="main_content" style="padding: 20px;">
         <div class="row">
@@ -33,10 +35,15 @@
                         </div>
                     </div>
                     <div class="align-self-center mt-auto">
-                        <button class="btn btn-primary btn-add-to-cart" (click)="addProduct(product._id)">Dodaj do koszyka</button>
+                        <button class="btn btn-primary btn-add-to-cart" (click)="addProduct(product._id)">Dodaj do
+                            koszyka</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </main>
+
+<div class="footer mt-auto">
+    <app-footer></app-footer>
+</div>

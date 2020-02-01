@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <alert></alert>
+  <div id="formContent">
+
+    <form (ngSubmit)="onSubmit()">
+      <input type="text" id="username" [formControl]="username" name="username" placeholder="username">
+      <input type="password" id="password" [formControl]="password" name="password" placeholder="password">
+      <input type="submit" class="fadeIn fourth" value="Zaloguj">
+    </form>
+
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Zapomniałeś hasła?</a>
+    </div>
+
+  </div>
+</div>

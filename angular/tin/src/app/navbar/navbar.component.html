@@ -47,10 +47,22 @@
 
             </form>
 
+            <div *ngIf="currentUser">
+                <button class="btn btn-primary mr-2" (click)="logout()">Wyloguj</button>
+            </div>
+            <div *ngIf="!currentUser">
+                <button class="btn btn-primary mr-2" (click)="login()">Zaloguj</button>
+                <button class="btn btn-primary" (click)="register()">Zarejestruj</button>
+            </div>
+            <div *ngIf="currentUser && currentUser.role=='admin'">
+                <button class="btn btn-primary" (click)="addCategory()">Dodaj kategorie</button>
+            </div>
+
+<!-- 
             <a class="btn btn-primary mr-2" href="sign-in"
-            role="button">Zaloguj</a>
-            <a class="btn btn-primary" href="sign-up"
-            role="button">Zarejestruj</a>
+            role="button">Zaloguj</a> -->
+            <!-- <a class="btn btn-primary" href="sign-up"
+            role="button">Zarejestruj</a> -->
 
 
         </div>

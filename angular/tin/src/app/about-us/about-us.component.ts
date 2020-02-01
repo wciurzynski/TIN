@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'app-about-us',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutUsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _categoryService: CategoryService
+  ) {
+    this._categoryService.setLoginPage(false);
+  }
 
   ngOnInit() {
   }

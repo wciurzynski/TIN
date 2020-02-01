@@ -7,7 +7,9 @@ import { ContactComponent } from './contact/contact.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 const routes: Routes = [
   {
@@ -33,7 +35,15 @@ const routes: Routes = [
   },
   {
     path: 'sign-up', component: SignUpComponent,
-  }
+  },
+  // { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'add-category', component: AddCategoryComponent },
+
+
+  // otherwise redirect to home
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
