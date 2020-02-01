@@ -36,6 +36,9 @@ export class AddCategoryComponent implements OnInit {
     //   this.category_list = data['data'];
     // });
 
-    this._categoryService.addCategory(this.category.value);
+    this._categoryService.addCategory(this.category.value).subscribe({
+      next: data => this.router.navigate(['/product-list']),
+      error: error => console.error('There was an error!', error)
+    });
   }
 }

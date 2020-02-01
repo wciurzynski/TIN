@@ -19,10 +19,7 @@ export class CategoryService {
   }
 
   addCategory(categoryName: string) {
-    this.http.post<any>(this._urlCategoryList, { category: categoryName }).subscribe({
-      next: data => console.error('Success !', data),
-      error: error => console.error('There was an error!', error)
-  })
+    return this.http.post<any>(this._urlCategoryList, { category: categoryName })
     // return this.http.post(this._urlCategoryList, { 'category': categoryName })
     // .pipe(
     //   catchError(this.handleError('addHero', hero))
