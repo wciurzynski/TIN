@@ -4,6 +4,7 @@ var app = express();
 var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 var url = 'mongodb://localhost/TIN';
+app.use(express.json());
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
