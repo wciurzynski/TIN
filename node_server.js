@@ -220,6 +220,32 @@ app.get('/category', function (req, res) {
     });
 });
 
+
+app.post('/category', function (req, res) {
+
+    MongoClient.connect(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }, function (err, client) {
+        if (err) {
+            console.log(err);
+            process.exit(0);
+        }
+        console.log(req.body);
+        client.db('TIN').collection('category').insertOne({name: req.body.category}, function (error, response) {
+            if(error) {
+                console.log('Error occurred while inserting');
+               // return 
+            } else {
+               console.log('inserted record', response.ops[0]);
+               res.jsonp({"data": req.body});
+              // return 
+            }
+        });
+    });
+});
+
+
 app.get('/product/:productID', function (req, res) {
 
     console.log(req.params.productID);
