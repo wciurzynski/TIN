@@ -2,12 +2,16 @@
   <alert></alert>
     <div id="formContent">
   
-      <form (ngSubmit)="onSubmit()">
-        <input type="text" id="firstname" [formControl]="firstname" name="firstname" placeholder="firstname">
-        <input type="text" id="surname" [formControl]="surname" name="surname" placeholder="surname">
-        <input type="text" id="email" [formControl]="email" name="email" placeholder="email">
-        <input type="text" id="username" [formControl]="username" name="username" placeholder="username">
-        <input type="password" id="password" [formControl]="password" name="password" placeholder="password">
+      <form (ngSubmit)="onSubmit()" ngNativeValidate autocomplete="off" >
+        <input type="text" id="firstname" [formControl]="firstname" name="firstname" placeholder="firstname"
+        required minlength="3" pattern="[a-zA-Z]{3,}">
+        <input type="text" id="surname" [formControl]="surname" name="surname" placeholder="surname"
+        required minlength="3" pattern="[a-zA-Z]{3,}">
+        <input type="email" id="email" [formControl]="email" name="email" placeholder="email" required>
+        <input type="text" id="username" [formControl]="username" name="username" placeholder="username"
+        required minlength="5">
+        <input type="password" id="password" [formControl]="password" name="password" placeholder="password"
+        required minlength="5">
         <input type="submit" value="Rejestracja">
       </form> 
     </div>

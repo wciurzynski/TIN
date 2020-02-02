@@ -39,9 +39,13 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
 
     // // stop here if form is invalid
-    // if (this.registerForm.invalid) {
-    //     return;
-    // }
+    if (!this.firstname.value ||
+      !this.surname.value ||
+      !this.email.value ||
+      !this.username.value ||
+      !this.password.value) {
+      return;
+    }
 
     this.loading = true;
     let user: User = {
@@ -70,7 +74,7 @@ export class RegisterComponent implements OnInit {
                 this.alertService.error(error);
                 this.loading = false;
               });
-          
+
         },
         error => {
           console.log(error);
