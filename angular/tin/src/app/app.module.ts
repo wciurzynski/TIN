@@ -30,6 +30,7 @@ import { RegisterComponent } from './register/register.component';
 import { AlertComponent } from './_components';
 import { AddCategoryComponent } from './add-category/add-category.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

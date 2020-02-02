@@ -42,26 +42,31 @@
 
             <!-- <section class="filter-wrapper">
                 <div class="keyword-wrapper">
-                    <input type="text" id="keyword" placeholder="Search for artists..." autofocus />
+                    <input [formControl]="queryField" type="text" id="keyword" placeholder="search for artists..."
+                        autofocus />
                 </div>
                 <ul class="filter-select">
-                    <li class="filter-select-list"><img src="" alt="" width="50" height="50">
-                        <p class="artist-name"></p>
-                        <span class="tags"></span>
+                    <li *ngFor="let result of results" class="filter-select-list"><img src="{{result.images['2']?.url}}"
+                            alt="" width="50" height="50">
+                        <p class="artist-name">
+                            {{result.name}}</p>
+                        <span class="tags" *ngFor='let genre of result?.genres | slice:0:6'>{{genre}}</span>
                 </ul>
             </section> -->
 
-            <form class="form-inline">
-                <input id="keyword" class="form-control mr-1" type="search" placeholder="Wyszukaj" autofocus aria-label="Wyszukaj">
-                <!-- <input class='mr-1' type="text" id="keyword" placeholder="Wyszukaj." autofocus /> -->
+            <!-- <form class="form-inline">
+                <input [formControl]="queryField" id="keyword" class="form-control mr-1" type="search"
+                    placeholder="Wyszukaj" autofocus aria-label="Wyszukaj">
+                <input class='mr-1' type="text" id="keyword" placeholder="Wyszukaj." autofocus />
                 <ul class="filter-select">
-                    <li class="filter-select-list"><img src="" alt="" width="50" height="50">
-                        <p class="artist-name"></p>
-                        <span class="tags"></span>
+                    <li *ngFor="let result of results" class="filter-select-list">
+                        <p class="artist-name">
+                            {{result.name}}</p>
+                        <span class="tags" *ngFor='let genre of result?.genres | slice:0:6'>{{genre}}</span>
                 </ul>
                 <button id="search" class="btn btn-primary" type="submit">Znajdź</button>
 
-            </form>
+            </form> -->
 
             <div *ngIf="currentUser">
                 <button class="btn btn-primary mr-2" (click)="logout()">Wyloguj</button>

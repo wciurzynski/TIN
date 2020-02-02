@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { IOpenWeather } from '../open-weather';
+import { Router, ActivatedRoute } from '@angular/router';
 import { OpenWeatherService } from '../open-weather.service';
 import { CategoryService } from '../category.service';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap, catchError, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-list',
@@ -17,8 +21,24 @@ export class ProductListComponent implements OnInit {
   public selected_category = null;
   latitude: number;
   longitude: number;
+  results: any[] = [];
+  queryField: FormControl = new FormControl();
+
+  public model: any;
+
+  search = (text$: Observable<string>) => {
+    return text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      map(term => term.length < 1
+        ? []
+        : this.product_list.filter(v => v.name.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+    );
+  }
 
   constructor(
+    private route: ActivatedRoute,
+    private router: Router,
     private _categoryService: CategoryService,
     private _productService: ProductService,
     private _openWeatherService: OpenWeatherService
@@ -33,9 +53,48 @@ export class ProductListComponent implements OnInit {
     this._categoryService.getCategoryList()
       .subscribe(data => {
         this.category_list = data['data'];
+        console.log(this.category_list);
       });
 
     this.setCurrentLocation();
+    this.queryField.valueChanges
+      .subscribe(queryField => this.onChange(queryField))
+  }
+
+  /**
+   * Used to format the result data from the lookup into the
+   * display and list values. Maps `{name: "band", id:"id" }` into a string
+  */
+  resultFormatBandListValue(value: any) {
+    return value.name;
+  }
+  /**
+    * Initially binds the string value and then after selecting
+    * an item by checking either for string or key/value object.
+  */
+  inputFormatBandListValue(value: any) {
+    if (value.name)
+      return value.name
+    return value;
+  }
+
+  selectedItem(item) {
+    console.log(item);
+    console.log(item.item);
+    console.log(item.item._id);
+    if (item && item.item && item.item._id) {
+      console.log('/product-details?productID=' + item.item._id);
+      this.router.navigate(['/product-details'], { queryParams: { productID: item.item._id } });
+    }
+  }
+
+  onChange(queryField) {
+    if (!queryField) {
+      this.results = [];
+    } else {
+      this._categoryService.search(queryField)
+        .subscribe(response => this.results = response['data']);
+    }
   }
 
   addProduct(product_id) {
