@@ -3,7 +3,10 @@ import { CategoryService } from '../category.service';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../_services';
 import { User } from '../_models';
-
+import { FormControl } from ‘@angular/forms’;
+import ‘rxjs/add/operator/debounceTime’;
+import ‘rxjs/add/operator/distinctUntilChanged’;
+import ‘rxjs/add/operator/switchMap’;
 
 
 @Component({
@@ -16,6 +19,8 @@ export class NavbarComponent implements OnInit {
   isLoginIn = false;
   loginPage;
   currentUser: User;
+  results: any[] = [];
+  queryField: FormControl = new FormControl();
 
   constructor(
     private router: Router,
@@ -28,8 +33,12 @@ export class NavbarComponent implements OnInit {
     console.log(this.currentUser);
   }
 
-  ngOnInit() { }
-
+  ngOnInit() {
+    this.queryField.valueChanges.subscribe(result => console.log(result));
+    this.queryField.valueChanges
+    .subscribe(queryField =>this._categoryService.search(queryField)
+    .subscribe(response => this.results = response['data']));
+   }
   // private getDismissReason(reason: any): string {
   //   if (reason === ModalDismissReasons.ESC) {
   //     return 'by pressing ESC';

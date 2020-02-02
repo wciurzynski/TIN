@@ -40,9 +40,25 @@
 
             </ul>
 
-            <form class="form-inline">
+            <!-- <section class="filter-wrapper">
+                <div class="keyword-wrapper">
+                    <input type="text" id="keyword" placeholder="Search for artists..." autofocus />
+                </div>
+                <ul class="filter-select">
+                    <li class="filter-select-list"><img src="" alt="" width="50" height="50">
+                        <p class="artist-name"></p>
+                        <span class="tags"></span>
+                </ul>
+            </section> -->
 
-                <input class="form-control mr-1" type="search" placeholder="Wyszukaj" aria-label="Wyszukaj">
+            <form class="form-inline">
+                <input id="keyword" class="form-control mr-1" type="search" placeholder="Wyszukaj" autofocus aria-label="Wyszukaj">
+                <!-- <input class='mr-1' type="text" id="keyword" placeholder="Wyszukaj." autofocus /> -->
+                <ul class="filter-select">
+                    <li class="filter-select-list"><img src="" alt="" width="50" height="50">
+                        <p class="artist-name"></p>
+                        <span class="tags"></span>
+                </ul>
                 <button id="search" class="btn btn-primary" type="submit">Znajdź</button>
 
             </form>
@@ -58,7 +74,7 @@
                 <button class="btn btn-primary" (click)="addCategory()">Dodaj kategorie</button>
             </div>
 
-<!-- 
+            <!-- 
             <a class="btn btn-primary mr-2" href="sign-in"
             role="button">Zaloguj</a> -->
             <!-- <a class="btn btn-primary" href="sign-up"

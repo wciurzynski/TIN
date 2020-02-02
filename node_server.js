@@ -214,10 +214,16 @@ app.get('/category', function (req, res) {
             console.log(err);
             process.exit(0);
         }
-
-        client.db('TIN').collection('category').find({}).toArray(function(err, result) {
-            res.jsonp({"data": result});
-        });
+        var categoryName = req.query.category;
+        if (categoryName){
+            client.db('TIN').collection('category').find({'name': {"$regex": categoryName, '$options' : 'i'}}).toArray(function(err, result) {
+                res.jsonp({"data": result});
+            });
+        } else{
+            client.db('TIN').collection('category').find({}).toArray(function(err, result) {
+                res.jsonp({"data": result});
+            });
+        }
     });
 });
 

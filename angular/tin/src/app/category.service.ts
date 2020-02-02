@@ -18,8 +18,13 @@ export class CategoryService {
     return this.http.get<ICategory[]>(this._urlCategoryList);
   }
 
+  search(queryString: string) {
+    let _URL = this._urlCategoryList + '?category=' + queryString;
+    return this.http.get(_URL);
+}
+
   addCategory(categoryName: string) {
-    return this.http.post<any>(this._urlCategoryList, { category: categoryName })
+    return this.http.post<any>(this._urlCategoryList, { category: categoryName });
     // return this.http.post(this._urlCategoryList, { 'category': categoryName })
     // .pipe(
     //   catchError(this.handleError('addHero', hero))
